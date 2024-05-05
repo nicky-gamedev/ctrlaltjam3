@@ -47,11 +47,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d4b580c47eeaa8449dfaf4632fe4531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _outline: {fileID: 0}
+  _outline: {fileID: 2100000, guid: a6c30486831f43b4d99d3ea16fb3ac9d, type: 2}
   _paths: []
-  _prefab: {fileID: 8709992718977906294}
+  _pathsWater: []
+  _cities: []
+  _prefab: {fileID: 4030052898156565997}
   _placingMode: 0
   _waterMaterial: {fileID: 2100000, guid: be5c09a847ac2614da67897f0f3567bd, type: 2}
+  _waterFill: {fileID: 7932738578818974289}
 --- !u!212 &6956692876254130987
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -167,7 +170,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_LocalScale: {x: 0.95, y: 0.95, z: 0.95}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2638051896856183826}
