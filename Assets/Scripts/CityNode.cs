@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using UnityEngine.Rendering.Universal;
 
 public class CityNode : MonoBehaviour, IPointerDownHandler
 {
@@ -15,9 +16,13 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
 
     [SerializeField] private bool _placingMode;
 
+    [SerializeField] private Gradient _tunnelColor;
+
     [SerializeField] private Material _waterMaterial;
 
     [SerializeField] private WaterFill _waterFill;
+
+    [SerializeField] private Light2D _light2D;
 
     public bool _fillingWithWater = false;
 
@@ -29,13 +34,30 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
         _fillingWithWater = true;
         _waterFill.Fill(()=>{
             _sequence = DOTween.Sequence();
+            _sequence.Insert(0, DOTween.To(x => _light2D.intensity = x, 1f, 0f, 1f).OnComplete(()=>{_light2D.enabled = false;}));
+            
+            List<bool> fillingCities = new List<bool>();
+
+            foreach (CityNode city in _cities){
+                fillingCities.Add(!city._fillingWithWater);
+            }
+
+            int index = 0;
             foreach (LineRenderer pathWater in _pathsWater)
             {
-                if(_invertedPathsWater.Contains(pathWater)){
-                    pathWater.material.SetFloat("_Rotate", -80);
+                if(!fillingCities[index]){
+                    index += 1;
+                    continue;
                 }
+
+                if(_invertedPathsWater.Contains(pathWater)){
+                    pathWater.material.SetInt("_Up", 0);
+                }
+                pathWater.material.SetFloat("_Percentage", 0);
+                pathWater.material.SetFloat("_Percentage_Add", 0);
                 _sequence.Insert(0, pathWater.material.DOFloat(1.2f, "_Percentage", 2 * _pathsWater.Count).SetEase(Ease.Linear));
-                _sequence.Insert(0, pathWater.material.DOFloat(-0.08f, "_Percentage_Add", 2 * _pathsWater.Count).SetEase(Ease.Linear));;
+                _sequence.Insert(0, pathWater.material.DOFloat(-0.08f, "_Percentage_Add", 2 * _pathsWater.Count).SetEase(Ease.Linear));
+                index += 1;
             }
             _sequence.OnComplete(()=>{
                 foreach (CityNode city in _cities){
@@ -112,6 +134,7 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
         var gameObjectChild = new GameObject();
         gameObjectChild.name = "Line Renderer";
         gameObjectChild.transform.SetParent(this.transform);
+        gameObjectChild.transform.position = new Vector3(0,0,0);
 
         var gameObjectGrandchild = new GameObject();
         gameObjectGrandchild.name = "Line Renderer Water";
@@ -122,6 +145,7 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
 
         line.sortingOrder = -2;
         line.material = _outline;
+        line.colorGradient  = _tunnelColor;
 
         lineWater.sortingOrder = -1;
         lineWater.material = new Material(_waterMaterial);

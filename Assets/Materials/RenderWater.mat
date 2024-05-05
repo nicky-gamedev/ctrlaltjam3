@@ -72,7 +72,7 @@ Material:
     - _Amplitude: 0.02
     - _Amplitude_Wave_2: 0.02
     - _EnableExternalAlpha: 0
-    - _FinalAlpha: 0.38
+    - _FinalAlpha: 0.77
     - _FinalWalpha: -0.38
     - _Lenght: 12.2
     - _Lenght_Wave_2: 14
@@ -86,7 +86,7 @@ Material:
     - _inal: 0
     m_Colors:
     - _Color: {r: 0.11513699, g: 0.5171776, b: 0.5924529, a: 0.24313726}
-    - _Color_Water: {r: 0.050980255, g: 0.7254902, b: 0.9686275, a: 1}
+    - _Color_Water: {r: 0.23065136, g: 0.64120024, b: 0.78867924, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
