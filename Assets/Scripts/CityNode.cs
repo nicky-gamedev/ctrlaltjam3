@@ -72,6 +72,10 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
     public void SetPath(List<LineRenderer> paths, int index, Vector3 destination)
     {
         var line = paths[index];
+        line.material.SetFloat("_Distance", Mathf.InverseLerp(0, 30, Vector3.Distance(transform.position, destination) * 4));
+        if(paths == _paths){
+            line.material.SetVector("_Tilling", new Vector4(Mathf.InverseLerp(0, 30, Vector3.Distance(transform.position, destination) * 4), 1, 0, 0));
+        }
         line.SetPosition(0, transform.position);
         line.SetPosition(1, destination);
     }

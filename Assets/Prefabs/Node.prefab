@@ -57,8 +57,8 @@ MonoBehaviour:
   _placingMode: 0
   _tunnelColor:
     serializedVersion: 2
-    key0: {r: 0.85660374, g: 0.4833215, b: 0.2052616, a: 1}
-    key1: {r: 0.8113208, g: 0.40220225, b: 0.09643998, a: 1}
+    key0: {r: 0.86415094, g: 0.44391453, b: 0.20054817, a: 1}
+    key1: {r: 0.8627451, g: 0.44313726, b: 0.2, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -275,6 +275,67 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _material: {fileID: -876546973899608171, guid: f707980359f714846b3d6ac084ad985a, type: 3}
   _spriteRenderer: {fileID: 3731279846013764553}
+  _lightsOutCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0.49777117
+      outSlope: 0.49777117
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.10294503
+      value: 1.0512431
+      inSlope: -0.0009605098
+      outSlope: -0.0009605098
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.27095512
+      value: 0.1003595
+      inSlope: -0.039774526
+      outSlope: -0.039774526
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.37911212
+      value: 1.0591787
+      inSlope: 0.034450065
+      outSlope: 0.034450065
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.6121984
+      value: 0.15427327
+      inSlope: 0.07578548
+      outSlope: 0.07578548
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.38332725
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2.1808233
+      outSlope: 2.1808233
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _light2D: {fileID: 3155819768780829986}
 --- !u!1 &9203906764974772797
 GameObject:
   m_ObjectHideFlags: 0

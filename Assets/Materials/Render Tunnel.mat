@@ -75,6 +75,7 @@ Material:
     - _Alpha_Wave_2: 0.62
     - _Amplitude: 0.02
     - _Amplitude_Wave_2: 0.02
+    - _Distance: 1
     - _EnableExternalAlpha: 0
     - _FinalAlpha: 0.38
     - _FinalWalpha: -0.38
@@ -94,4 +95,5 @@ Material:
     - _Color_Water: {r: 0.050980255, g: 0.7254902, b: 0.9686275, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Tilling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
