@@ -9,7 +9,7 @@ using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
 using System;
 
-public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
+public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     private Vector2 _uiPosition;
 
@@ -74,7 +74,7 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         _pointLocatorCircle.transform.position = nodePos;
     }
 
-    public void OnDrag(PointerEventData eventData){
+    private void Update(){
         if(_followingMouse){
             _onMouseUp = false;
             transform.position = Input.mousePosition;
