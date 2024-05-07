@@ -13,13 +13,6 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
     public List<LineRenderer> _pathsWater;
     public List<LineRenderer> _invertedPathsWater;
     public List<CityNode> _cities;
-    [SerializeField] private GameObject _prefab;
-
-    [SerializeField] private bool _placingMode;
-
-    [SerializeField] private Gradient _tunnelColor;
-
-    [SerializeField] private Material _waterMaterial;
 
     [SerializeField] private WaterFill _waterFill;
 
@@ -27,17 +20,11 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
 
     public bool _fillingWithWater = false;
 
-    float _timerIgnoreClick = 0f;
-
     [HideInInspector] public float _constructingProgress;
 
     public CityNodesHolder _cityNodesHolder;
 
     DG.Tweening.Sequence _sequence;
-
-    private void Start(){
-        _cityNodesHolder.AddCity(this);
-    }
 
     public void DoneConstructing(){
         if(!_fillingWithWater){
@@ -67,6 +54,8 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
                     continue;
                 }
 
+                Debug.Log("Sapo");
+
                 if(_invertedPathsWater.Contains(pathWater)){
                     pathWater.material.SetInt("_Up", 0);
                 }
@@ -86,64 +75,6 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
         });
     }
 
-    public void SetPath(List<LineRenderer> paths, int index, Vector3 destination)
-    {
-        var line = paths[index];
-        line.material.SetFloat("_Distance", Mathf.InverseLerp(0, 30, Vector3.Distance(transform.position, destination) * 4));
-        if(paths == _paths){
-            line.material.SetVector("_Tilling", new Vector4(Mathf.InverseLerp(0, 30, Vector3.Distance(transform.position, destination) * 4), 1, 0, 0));
-        }
-        line.SetPosition(0, transform.position);
-        line.SetPosition(1, destination);
-    }
-
-    public void ToggleMode()
-    {
-        _placingMode = !_placingMode;
-    }
-
-    private void Update()
-    {
-        if (_placingMode)
-        {
-            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            pos.z = 0;
-            SetPath(_paths, _paths.Count-1, pos);
-            SetPath(_pathsWater, _pathsWater.Count-1, pos);
-
-            _timerIgnoreClick += Time.deltaTime;
-            if(Input.GetMouseButtonDown(0) && _timerIgnoreClick > 0.1f)
-            {
-                _placingMode = false;
-                _timerIgnoreClick = 0f;
-                CityNode cityNode = Instantiate(_prefab, pos, Quaternion.identity).GetComponent<CityNode>();
-                cityNode._paths.Clear();
-                cityNode._pathsWater.Clear();
-                cityNode._cities.Clear();
-                cityNode._paths.Add(_paths[_paths.Count-1]);
-                cityNode._pathsWater.Add(_pathsWater[_pathsWater.Count-1]);
-                cityNode._invertedPathsWater.Add(_pathsWater[_pathsWater.Count-1]);
-                cityNode._cities.Add(this);
-                Transform[] transforms = cityNode.GetComponentsInChildren<Transform>();
-                Light2D light2d = cityNode.GetComponentInChildren<Light2D>();
-                light2d.intensity = 0f;
-                cityNode._constructingProgress = 0f;
-
-                foreach (Transform t in transforms)
-                {
-                    if (t.name == "Line Renderer")
-                    {
-                        Destroy(t.gameObject);
-                    }
-                }
-
-                _cities.Add(cityNode);
-                cityNode._cityNodesHolder = _cityNodesHolder;
-                _cityNodesHolder.ConstructingCity(cityNode);
-            }
-        }
-    }
-
     public void OnPointerDown(PointerEventData eventData)
     {
         if(_fillingWithWater){
@@ -154,33 +85,5 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
             FillWithWater();
             return;
         }
-
-        ToggleMode();
-
-        var gameObjectChild = new GameObject();
-        gameObjectChild.name = "Line Renderer";
-        gameObjectChild.transform.SetParent(this.transform);
-        gameObjectChild.transform.position = new Vector3(0,0,0);
-
-        var gameObjectGrandchild = new GameObject();
-        gameObjectGrandchild.name = "Line Renderer Water";
-        gameObjectGrandchild.transform.SetParent(gameObjectChild.transform);
-
-        var line = gameObjectChild.AddComponent<LineRenderer>();
-        var lineWater = gameObjectGrandchild.AddComponent<LineRenderer>();
-
-        line.sortingOrder = -2;
-        line.material = _outline;
-        line.colorGradient  = _tunnelColor;
-
-        lineWater.sortingOrder = -1;
-        lineWater.material = new Material(_waterMaterial);
-        lineWater.material.SetFloat("_FinalAlpha", WaterFill._waterAlpha);
-
-        line.SetPosition(0, transform.position);
-        lineWater.SetPosition(0, transform.position);
-
-        _paths.Add(line);
-        _pathsWater.Add(lineWater);
     }
 }
