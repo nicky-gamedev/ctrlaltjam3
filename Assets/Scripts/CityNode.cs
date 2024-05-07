@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 using UnityEngine.Rendering.Universal;
+using Unity.VisualScripting;
 
 public class CityNode : MonoBehaviour, IPointerDownHandler
 {
@@ -28,11 +29,27 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
 
     float _timerIgnoreClick = 0f;
 
-    Sequence _sequence;
+    [HideInInspector] public float _constructingProgress;
+
+    public CityNodesHolder _cityNodesHolder;
+
+    DG.Tweening.Sequence _sequence;
+
+    private void Start(){
+        _cityNodesHolder.AddCity(this);
+    }
+
+    public void DoneConstructing(){
+        if(!_fillingWithWater){
+            _light2D.intensity = 1f;
+        }
+    }
     
     public void FillWithWater(){
         _fillingWithWater = true;
         _waterFill.Fill(()=>{
+            _cityNodesHolder.RemoveCity(this);
+            _cityNodesHolder.DoneConstructing(this);
             _sequence = DOTween.Sequence();
             _sequence.Insert(0, DOTween.To(x => _light2D.intensity = x, 1f, 0f, 1f).OnComplete(()=>{_light2D.enabled = false;}));
             
@@ -108,6 +125,9 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
                 cityNode._invertedPathsWater.Add(_pathsWater[_pathsWater.Count-1]);
                 cityNode._cities.Add(this);
                 Transform[] transforms = cityNode.GetComponentsInChildren<Transform>();
+                Light2D light2d = cityNode.GetComponentInChildren<Light2D>();
+                light2d.intensity = 0f;
+                cityNode._constructingProgress = 0f;
 
                 foreach (Transform t in transforms)
                 {
@@ -118,6 +138,8 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
                 }
 
                 _cities.Add(cityNode);
+                cityNode._cityNodesHolder = _cityNodesHolder;
+                _cityNodesHolder.ConstructingCity(cityNode);
             }
         }
     }
