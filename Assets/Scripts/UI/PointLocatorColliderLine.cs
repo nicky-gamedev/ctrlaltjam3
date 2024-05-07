@@ -23,7 +23,7 @@ public class PointLocatorColliderLine : MonoBehaviour
         _collider.SetPoints(points);
     }
 
-    void Start()
+    void Awake()
     {
         _collider = GetComponent<EdgeCollider2D>();
     }

@@ -756,8 +756,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enabled: 1
   _delta: 6
-  _speed: 3
-  _timerSpeed: 0.9
+  _speed: 7
+  _timerSpeed: 1.5
 --- !u!222 &1122146650
 CanvasRenderer:
   m_ObjectHideFlags: 0
