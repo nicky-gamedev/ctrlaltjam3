@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 using DG.Tweening;
 using UnityEngine.Rendering.Universal;
 using Unity.VisualScripting;
+using static UnityEngine.GraphicsBuffer;
+using UnityEngine.UIElements;
 
 public class CityNode : MonoBehaviour, IPointerDownHandler
 {
@@ -17,14 +19,18 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
     [SerializeField] private WaterFill _waterFill;
 
     [SerializeField] private Light2D _light2D;
+    [SerializeField] private DrillScript drillPrefab;
 
     public bool _fillingWithWater = false;
+    public bool _aimingDrill = false;
 
     [HideInInspector] public float _constructingProgress;
 
     public CityNodesHolder _cityNodesHolder;
 
     DG.Tweening.Sequence _sequence;
+
+    float clickDelay;
 
     public void DoneConstructing(){
         if(!_fillingWithWater){
@@ -85,5 +91,35 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
             FillWithWater();
             return;
         }
+
+        if(eventData.button == PointerEventData.InputButton.Left)
+        {
+            _aimingDrill = true;
+        }
+    }
+
+    private void Update()
+    {
+        if (_aimingDrill)
+        {
+            clickDelay += Time.deltaTime;
+            if(clickDelay > 0.25f && Input.GetMouseButtonDown(0))
+            {
+                ShootDrill(Input.mousePosition);
+                clickDelay = 0f;
+            }
+        }
+    }
+
+    public void ShootDrill(Vector3 mousePosition)
+    {
+        var pos = Camera.main.ScreenToWorldPoint(mousePosition);
+        pos.z = 0;
+
+        var drill = Instantiate(drillPrefab.gameObject, transform.position, Quaternion.identity);
+        Vector3 relative = transform.InverseTransformPoint(pos);
+        var angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
+        drill.transform.Rotate(0, 0, -angle);
+        _aimingDrill = false;
     }
 }

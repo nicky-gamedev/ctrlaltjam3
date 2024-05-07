@@ -56,7 +56,9 @@ MonoBehaviour:
   _cities: []
   _waterFill: {fileID: 7932738578818974289}
   _light2D: {fileID: 3155819768780829986}
+  drillPrefab: {fileID: 8801343468678201515, guid: ba4c34d4ac93def448cdd64d5d22fd7b, type: 3}
   _fillingWithWater: 0
+  _aimingDrill: 0
   _constructingProgress: 0
   _cityNodesHolder: {fileID: 0}
 --- !u!212 &6956692876254130987
