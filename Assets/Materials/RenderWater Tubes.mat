@@ -75,6 +75,7 @@ Material:
     - _Alpha_Wave_2: 0.62
     - _Amplitude: 0.02
     - _Amplitude_Wave_2: 0.02
+    - _Distance: 1
     - _EnableExternalAlpha: 0
     - _FinalAlpha: 0.38
     - _FinalWalpha: -0.38
@@ -85,6 +86,9 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Rotate: 270
+    - _SineValue1: 24.61
+    - _SineValue2: 0.05
+    - _SineValue3: 0.04
     - _Smoothstep: 0.021
     - _Up: 1
     - _Velocity: 0.3

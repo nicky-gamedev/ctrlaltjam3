@@ -131,7 +131,7 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         _line.material.SetVector("_Tilling", new Vector4(Mathf.InverseLerp(0, 30, Vector3.Distance(transform.position, destination) * 4), 1, 0, 0));
         List<Vector2> colliderPoints = new List<Vector2>();
         colliderPoints.Add(Vector2.zero);
-        colliderPoints.Add(new Vector2(destination.x - origin.x, destination.y - origin.y));
+        colliderPoints.Add(new Vector2(origin.x - destination.x, origin.y - destination.y));
         _lineEdgeCollider.SetPoints(colliderPoints);
         _line.SetPosition(0, origin);
         _line.SetPosition(1, destination);
@@ -152,6 +152,7 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             cityNode._paths.Add(_line);
             _currentCityNode._paths.Add(_line);
             _line.transform.SetParent(_currentCityNode.transform);
+            _line.transform.localPosition = Vector3.zero;
 
             cityNode._pathsWater.Add(_lineWater);
             _currentCityNode._pathsWater.Add(_lineWater);
