@@ -20,7 +20,7 @@ public class DrillScript : MonoBehaviour
 
     public SpriteRenderer _spriteRenderer;
 
-    [HideInInspector] public bool _enabled = false;
+    public bool _enabled = false;
 
     [HideInInspector] public bool _ableToShoot = false;
 
@@ -35,7 +35,9 @@ public class DrillScript : MonoBehaviour
         _waterRenderer.material = new Material(_waterRenderer.material);
 
         _tunnelRenderer.material.SetFloat("_Rotate", 90);
-        _tunnelRenderer.material.SetFloat("_Rotate", 90);
+        _tunnelRenderer.material.SetFloat("_SineValue1", 35);
+        _waterRenderer.material.SetFloat("_Rotate", 90);
+        _waterRenderer.material.SetFloat("_SineValue1", 35);
     }
 
     public void OnTriggerEnter2D(Collider2D col){
@@ -59,9 +61,9 @@ public class DrillScript : MonoBehaviour
 
     private void SetPath(Vector3 origin, Vector3 destination)
     {
-        _tunnelRenderer.material.SetFloat("_Distance", Mathf.InverseLerp(0, 30, Vector3.Distance(transform.position, destination) * 4));
-        _waterRenderer.material.SetFloat("_Distance", Mathf.InverseLerp(0, 30, Vector3.Distance(transform.position, destination) * 4));
-        _tunnelRenderer.material.SetVector("_Tilling", new Vector4(Mathf.InverseLerp(0, 30, Vector3.Distance(transform.position, destination) * 4), 1, 0, 0));
+        _tunnelRenderer.material.SetFloat("_Distance", Mathf.InverseLerp(0, 100, Vector3.Distance(origin, destination) * 4));
+        _waterRenderer.material.SetFloat("_Distance", Mathf.InverseLerp(0, 100, Vector3.Distance(origin, destination) * 4));
+        _tunnelRenderer.material.SetVector("_Tilling", new Vector4(Mathf.InverseLerp(0, 100, Vector3.Distance(origin, destination) * 4), 1, 0, 0));
         List<Vector2> colliderPoints = new List<Vector2>();
         colliderPoints.Add(Vector2.zero);
         colliderPoints.Add(new Vector2(origin.x - destination.x, origin.y - destination.y));

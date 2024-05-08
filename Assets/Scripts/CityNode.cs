@@ -86,6 +86,8 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        Debug.Log("Gameobject: " + gameObject.name);
+
         if(_fillingWithWater){
             return;
         }
