@@ -26,10 +26,15 @@ public class DrillScript : MonoBehaviour
 
     private List<GameObject> _insideColliders = new List<GameObject>();
 
+    private List<Collider2D> _ignoreColliders = new List<Collider2D>();
+
     private Vector3 _initialPos; 
 
-    public void InitializeLaunch(){
+    public void InitializeLaunch(List<Collider2D> ignoreColliders){
         _enabled = true;
+
+        _ignoreColliders = ignoreColliders;
+
         _initialPos = transform.position;
         _tunnelRenderer.material = new Material(_tunnelRenderer.material);
         _waterRenderer.material = new Material(_waterRenderer.material);
@@ -42,11 +47,16 @@ public class DrillScript : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.name == "Collider Tunnel"){
-            if(_enabled){
-                _enabled = false;
-            }
             if(!_insideColliders.Contains(col.gameObject)){
                 _insideColliders.Add(col.gameObject);
+            }
+        }
+
+        if(col.gameObject.name == "Thin Collider Tunnel" || col.gameObject.name == "Drill Node Collider"){
+            if(_enabled){
+                _enabled = false;
+                _rigidbody.velocity = Vector2.zero;
+                Destroy(this.gameObject);
             }
         }
     }
@@ -77,7 +87,7 @@ public class DrillScript : MonoBehaviour
     void Update()
     {
         _ableToShoot = _insideColliders.Count == 0;
-        _spriteRenderer.color = _ableToShoot ? _defaultColor : _negativeColor;
+        _spriteRenderer.color = _ableToShoot || _enabled ? _defaultColor : _negativeColor;
 
         if(_enabled){
             _rigidbody.velocity = transform.up * _velocity;

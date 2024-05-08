@@ -15,12 +15,17 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
     public List<LineRenderer> _paths;
     public List<LineRenderer> _pathsWater;
     public List<LineRenderer> _invertedPathsWater;
+
     public List<CityNode> _cities;
 
     [SerializeField] private WaterFill _waterFill;
 
     [SerializeField] private Light2D _light2D;
     [SerializeField] private DrillScript _drillPrefab;
+
+    [SerializeField] private Collider2D _placeNodeCollider;
+
+    [SerializeField] private Collider2D _cityDrillCollider;
 
     [SerializeField] private float _drillDistance;
 
@@ -41,6 +46,15 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
         if(!_fillingWithWater){
             _light2D.intensity = 1f;
         }
+    }
+
+    public void EnablePlaceNodeCollider(bool value){
+        _placeNodeCollider.enabled = value;
+    }
+
+    private void Start(){
+        _cityNodesHolder._enablePlaceNodeCollider += EnablePlaceNodeCollider;
+        EnablePlaceNodeCollider(false);
     }
     
     public void FillWithWater(){
@@ -86,8 +100,6 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("Gameobject: " + gameObject.name);
-
         if(_fillingWithWater){
             return;
         }
@@ -100,6 +112,7 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
         if(eventData.button == PointerEventData.InputButton.Left && !_aimingDrill)
         {
             _aimingDrill = true;
+            _cityDrillCollider.enabled = false;
             _currentDrill = Instantiate(_drillPrefab.gameObject, transform.position, Quaternion.identity).GetComponent<DrillScript>();
         }
     }
@@ -142,9 +155,22 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
             Vector3 relative = transform.InverseTransformPoint(pos);
             var angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
             _currentDrill.transform.Rotate(0, 0, -angle);
-            _currentDrill.InitializeLaunch();
+
+
+            List<Collider2D> ignoreColliders = new List<Collider2D>();
+            Collider2D collider;
+            foreach (var path in _paths)
+            {
+                collider = path.GetComponentInChildren<Collider2D>();
+                if(collider != null){
+                    ignoreColliders.Add(collider);
+                }
+            }
+
+            _currentDrill.InitializeLaunch(ignoreColliders);
             Destroy(_currentDrill.gameObject, 5);
             _currentDrill = null;
+            _cityDrillCollider.enabled = false;
             _aimingDrill = false;
         }
     }

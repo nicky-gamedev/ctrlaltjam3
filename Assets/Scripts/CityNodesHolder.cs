@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
@@ -11,6 +12,8 @@ public class CityNodesHolder : MonoBehaviour
     private List<CityNode> _constructingNodes = new List<CityNode>();
 
     [SerializeField] private PeopleManager _peopleManager;
+
+    public Action<bool> _enablePlaceNodeCollider;
 
     public void AddCity(CityNode cityNode){
         if(!_cityNodes.Contains(cityNode)){

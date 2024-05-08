@@ -23,6 +23,8 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     [SerializeField] private GameObject _linePrefab;
 
+    [SerializeField] private CityNodesHolder _citiesNodeHolder;
+
     private PointLocatorColliderCircle _pointLocatorCircle;
 
     private PointLocatorColliderLine _pointLocatorLine;
@@ -53,9 +55,10 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerDown(PointerEventData eventData){
         _followingMouse = true;
+        _citiesNodeHolder._enablePlaceNodeCollider?.Invoke(true);
         _line = Instantiate(_linePrefab, Vector2.zero, Quaternion.identity).GetComponent<LineRenderer>();
         _lineWater = _line.transform.Find("Line Renderer Water").GetComponent<LineRenderer>();
-        _lineEdgeCollider = _line.GetComponentInChildren<EdgeCollider2D>();
+        _lineEdgeCollider = _line.transform.Find("Collider Tunnel").GetComponent<EdgeCollider2D>();
 
         _line.material = new Material(_line.material);
         _lineWater.material = new Material(_lineWater.material);
@@ -149,10 +152,15 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             cityNode._cities.Add(_currentCityNode);
             _currentCityNode._cities.Add(cityNode);
 
+            EdgeCollider2D childCollider = _line.transform.Find("Thin Collider Tunnel").GetComponent<EdgeCollider2D>();
+            List<Vector2> points = new List<Vector2>();
+            _lineEdgeCollider.GetPoints(points);
+            childCollider.SetPoints(points);
+
             cityNode._paths.Add(_line);
             _currentCityNode._paths.Add(_line);
-            _line.transform.SetParent(_currentCityNode.transform);
-            _line.transform.localPosition = Vector3.zero;
+            _line.transform.SetParent(null);
+            _line.transform.position = new Vector3(_currentCityNode.transform.position.x,_currentCityNode.transform.position.y, 1);
 
             cityNode._pathsWater.Add(_lineWater);
             _currentCityNode._pathsWater.Add(_lineWater);
@@ -162,7 +170,8 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             Light2D light2d = cityNode.GetComponentInChildren<Light2D>();
             light2d.intensity = 0f;
 
-            cityNode._cityNodesHolder = _currentCityNode._cityNodesHolder;
+            cityNode._cityNodesHolder = _citiesNodeHolder;
+
             cityNode._cityNodesHolder.ConstructingCity(cityNode);
 
             Destroy(_pointLocatorCircle.gameObject);
@@ -172,6 +181,7 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             _image.color = _defaultColor;
 
             _currentCityNode = null;
+            _citiesNodeHolder._enablePlaceNodeCollider?.Invoke(false);
         }
         else{
                 _followingMouse = false;
@@ -180,6 +190,7 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
                 Destroy(_pointLocatorCircle.gameObject);
                 Destroy(_line.gameObject);
+                _citiesNodeHolder._enablePlaceNodeCollider?.Invoke(false);
             }
     }
 }

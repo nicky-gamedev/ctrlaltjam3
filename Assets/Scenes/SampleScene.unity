@@ -1032,6 +1032,10 @@ PrefabInstance:
       propertyPath: _negativeColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
+      propertyPath: _citiesNodeHolder
+      value: 
+      objectReference: {fileID: 870273572}
     - target: {fileID: 8489903949421556712, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: m_Name
       value: CityNodeUIPrefab
