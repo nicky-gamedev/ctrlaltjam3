@@ -192,7 +192,7 @@ MonoBehaviour:
   _defaultColor: {r: 1, g: 1, b: 1, a: 1}
   _negativeColor: {r: 1, g: 0.020754695, b: 0.020754695, a: 0.59607846}
   _tunnelRenderer: {fileID: 2661118070882149849}
-  _waterRenderer: {fileID: 6572582914814551582}
+  _tunnel: {fileID: 4559151036037509043}
   _collider: {fileID: 364882319510246799}
   _onLaunch:
     m_PersistentCalls:
@@ -9988,6 +9988,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TunnelPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 5689075109692517586, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
+      propertyPath: _drillTunnel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6149890505865832120, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
       propertyPath: m_SortingOrder
       value: -3
@@ -10064,8 +10068,14 @@ LineRenderer:
   m_CorrespondingSourceObject: {fileID: 6149890505865832120, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
   m_PrefabInstance: {fileID: 8194013776381707105}
   m_PrefabAsset: {fileID: 0}
---- !u!120 &6572582914814551582 stripped
-LineRenderer:
-  m_CorrespondingSourceObject: {fileID: 3062585508488095103, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
+--- !u!114 &4559151036037509043 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5689075109692517586, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
   m_PrefabInstance: {fileID: 8194013776381707105}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cfdfc6e2c28f349a58456c349c22cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

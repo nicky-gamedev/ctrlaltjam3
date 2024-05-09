@@ -219,6 +219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8173255913822820930}
   - component: {fileID: 6149890505865832120}
+  - component: {fileID: 5689075109692517586}
   m_Layer: 0
   m_Name: TunnelPrefab
   m_TagString: Untagged
@@ -348,6 +349,23 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &5689075109692517586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4486612181594373395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cfdfc6e2c28f349a58456c349c22cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lineRenderer: {fileID: 3062585508488095103}
+  _cities: []
+  _tunnels: []
+  _invertedTunnels: []
+  _fillingWithWater: 0
 --- !u!1 &8588051646847459517
 GameObject:
   m_ObjectHideFlags: 0

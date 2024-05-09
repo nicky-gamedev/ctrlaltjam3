@@ -15,7 +15,7 @@ public class DrillScript : MonoBehaviour
 
     [SerializeField] private LineRenderer _tunnelRenderer;
 
-    [SerializeField] private LineRenderer _waterRenderer;
+    public TunnelScript _tunnel;
 
     [SerializeField] private EdgeCollider2D _collider;
 
@@ -42,12 +42,12 @@ public class DrillScript : MonoBehaviour
         _initialPos = transform.position;
 
         _tunnelRenderer.material = new Material(_tunnelRenderer.material);
-        _waterRenderer.material = new Material(_waterRenderer.material);
+        _tunnel._lineRenderer.material = new Material(_tunnel._lineRenderer.material);
 
         _tunnelRenderer.material.SetFloat("_Rotate", 90);
         _tunnelRenderer.material.SetFloat("_SineValue1", 35);
-        _waterRenderer.material.SetFloat("_Rotate", 90);
-        _waterRenderer.material.SetFloat("_SineValue1", 35);
+        _tunnel._lineRenderer.material.SetFloat("_Rotate", 90);
+        _tunnel._lineRenderer.material.SetFloat("_SineValue1", 35);
         _onLaunch.Invoke();
     }
 
@@ -62,6 +62,13 @@ public class DrillScript : MonoBehaviour
             if(_enabled){
                 _enabled = false;
                 _rigidbody.velocity = Vector2.zero;
+
+                TunnelScript tunnel = col.transform.parent.GetComponent<TunnelScript>(); 
+                if(tunnel != null){
+                    tunnel._tunnels.Add(this._tunnel);
+                    tunnel._invertedTunnels.Add(this._tunnel);
+                }
+
                 Destroy(this.gameObject);
             }
         }
@@ -78,7 +85,7 @@ public class DrillScript : MonoBehaviour
     private void SetPath(Vector3 origin, Vector3 destination)
     {
         _tunnelRenderer.material.SetFloat("_Distance", Mathf.InverseLerp(0, 100, Vector3.Distance(origin, destination) * 4));
-        _waterRenderer.material.SetFloat("_Distance", Mathf.InverseLerp(0, 100, Vector3.Distance(origin, destination) * 4));
+        _tunnel._lineRenderer.material.SetFloat("_Distance", Mathf.InverseLerp(0, 100, Vector3.Distance(origin, destination) * 4));
         _tunnelRenderer.material.SetVector("_Tilling", new Vector4(Mathf.InverseLerp(0, 100, Vector3.Distance(origin, destination) * 4), 1, 0, 0));
         List<Vector2> colliderPoints = new List<Vector2>();
         colliderPoints.Add(Vector2.zero);
@@ -86,8 +93,8 @@ public class DrillScript : MonoBehaviour
         _collider.SetPoints(colliderPoints);
         _tunnelRenderer.SetPosition(0, origin);
         _tunnelRenderer.SetPosition(1, destination);
-        _waterRenderer.SetPosition(0, origin);
-        _waterRenderer.SetPosition(1, destination);
+        _tunnel._lineRenderer.SetPosition(0, origin);
+        _tunnel._lineRenderer.SetPosition(1, destination);
     }
 
     void Update()

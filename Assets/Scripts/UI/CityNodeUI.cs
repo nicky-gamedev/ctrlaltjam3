@@ -31,7 +31,7 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private LineRenderer _line;
 
-    private LineRenderer _lineWater;
+    private TunnelScript _tunnel;
 
     private EdgeCollider2D _lineEdgeCollider;
 
@@ -57,14 +57,14 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         _followingMouse = true;
         _citiesNodeHolder._enablePlaceNodeCollider?.Invoke(true);
         _line = Instantiate(_linePrefab, Vector2.zero, Quaternion.identity).GetComponent<LineRenderer>();
-        _lineWater = _line.transform.Find("Line Renderer Water").GetComponent<LineRenderer>();
+        _tunnel = _line.GetComponent<TunnelScript>();
         _lineEdgeCollider = _line.transform.Find("Collider Tunnel").GetComponent<EdgeCollider2D>();
 
         _line.material = new Material(_line.material);
-        _lineWater.material = new Material(_lineWater.material);
+        _tunnel._lineRenderer.material = new Material(_tunnel._lineRenderer.material);
         
         _line.material.SetFloat("_Rotate", 90);
-        _lineWater.material.SetFloat("_Rotate", 90);
+        _tunnel._lineRenderer.material.SetFloat("_Rotate", 90);
 
         _pointLocatorCircle = Instantiate(_pointLocatorPrefab, Vector2.zero, Quaternion.identity).GetComponent<PointLocatorColliderCircle>();
         _pointLocatorLine = _pointLocatorCircle.GetComponentInChildren<PointLocatorColliderLine>();
@@ -130,7 +130,7 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private void SetPath(Vector3 origin, Vector3 destination)
     {
         _line.material.SetFloat("_Distance", Mathf.InverseLerp(0, 30, Vector3.Distance(transform.position, destination) * 4));
-        _lineWater.material.SetFloat("_Distance", Mathf.InverseLerp(0, 30, Vector3.Distance(transform.position, destination) * 4));
+        _tunnel._lineRenderer.material.SetFloat("_Distance", Mathf.InverseLerp(0, 30, Vector3.Distance(transform.position, destination) * 4));
         _line.material.SetVector("_Tilling", new Vector4(Mathf.InverseLerp(0, 30, Vector3.Distance(transform.position, destination) * 4), 1, 0, 0));
         List<Vector2> colliderPoints = new List<Vector2>();
         colliderPoints.Add(Vector2.zero);
@@ -138,8 +138,8 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         _lineEdgeCollider.SetPoints(colliderPoints);
         _line.SetPosition(0, origin);
         _line.SetPosition(1, destination);
-        _lineWater.SetPosition(0, origin);
-        _lineWater.SetPosition(1, destination);
+        _tunnel._lineRenderer.SetPosition(0, origin);
+        _tunnel._lineRenderer.SetPosition(1, destination);
     }
 
     public void OnPointerUp(PointerEventData eventData){
@@ -162,10 +162,13 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             _line.transform.SetParent(null);
             _line.transform.position = new Vector3(_currentCityNode.transform.position.x,_currentCityNode.transform.position.y, 1);
 
-            cityNode._pathsWater.Add(_lineWater);
-            _currentCityNode._pathsWater.Add(_lineWater);
+            cityNode._tunnels.Add(_tunnel);
+            _currentCityNode._tunnels.Add(_tunnel);
+            
+            _tunnel._cities.Add(_currentCityNode);
+            _tunnel._cities.Add(cityNode);
 
-            cityNode._invertedPathsWater.Add(_lineWater);
+            cityNode._invertedTunnels.Add(_tunnel);
 
             Light2D light2d = cityNode.GetComponentInChildren<Light2D>();
             light2d.intensity = 0f;

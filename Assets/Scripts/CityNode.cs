@@ -14,8 +14,8 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private Material _outline;
     public List<LineRenderer> _paths;
-    public List<LineRenderer> _pathsWater;
-    public List<LineRenderer> _invertedPathsWater;
+    public List<TunnelScript> _tunnels;
+    public List<TunnelScript> _invertedTunnels;
 
     public List<CityNode> _cities;
 
@@ -68,36 +68,12 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
             _sequence = DOTween.Sequence();
             _sequence.Insert(0, DOTween.To(x => _light2D.intensity = x, 1f, 0f, 1f).OnComplete(()=>{_light2D.enabled = false;}));
             
-            List<bool> fillingCities = new List<bool>();
-
-            foreach (CityNode city in _cities){
-                fillingCities.Add(!city._fillingWithWater);
-            }
-
-            int index = 0;
-            foreach (LineRenderer pathWater in _pathsWater)
+            foreach (TunnelScript tunnel in _tunnels)
             {
-                if(!fillingCities[index]){
-                    index += 1;
-                    continue;
+                if(!tunnel._fillingWithWater){
+                    tunnel.FillWithWater(_invertedTunnels.Contains(tunnel));
                 }
-
-                if(_invertedPathsWater.Contains(pathWater)){
-                    pathWater.material.SetInt("_Up", 0);
-                }
-                pathWater.material.SetFloat("_Percentage", 0);
-                pathWater.material.SetFloat("_Percentage_Add", 0);
-                _sequence.Insert(0, pathWater.material.DOFloat(1.2f, "_Percentage", 2 * _pathsWater.Count).SetEase(Ease.Linear));
-                _sequence.Insert(0, pathWater.material.DOFloat(-0.08f, "_Percentage_Add", 2 * _pathsWater.Count).SetEase(Ease.Linear));
-                index += 1;
             }
-            _sequence.OnComplete(()=>{
-                foreach (CityNode city in _cities){
-                    if(!city._fillingWithWater){
-                        city.FillWithWater();
-                    }
-                }
-            });
         });
     }
 
@@ -160,6 +136,8 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
             var angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
             _currentDrill.transform.Rotate(0, 0, -angle);
 
+            _currentDrill._tunnel._cities.Add(this);
+            _tunnels.Add(_currentDrill._tunnel);
 
             List<Collider2D> ignoreColliders = new List<Collider2D>();
             Collider2D collider;
