@@ -173,6 +173,7 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             cityNode._cityNodesHolder = _citiesNodeHolder;
 
             cityNode._cityNodesHolder.ConstructingCity(cityNode);
+            cityNode.onNodePlace?.Invoke();
 
             Destroy(_pointLocatorCircle.gameObject);
 

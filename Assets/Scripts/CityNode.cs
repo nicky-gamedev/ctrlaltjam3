@@ -42,6 +42,8 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
     DG.Tweening.Sequence _sequence;
 
     float _clickDelay;
+    
+    public UnityEvent onNodePlace = new UnityEvent();
 
     public void DoneConstructing(){
         if(!_fillingWithWater){
