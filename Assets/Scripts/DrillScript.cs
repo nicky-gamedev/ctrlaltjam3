@@ -60,6 +60,7 @@ public class DrillScript : MonoBehaviour
 
         if(col.gameObject.name == "Thin Collider Tunnel" || col.gameObject.name == "Drill Node Collider"){
             if(_enabled){
+                Debug.Log(col.transform.parent.gameObject.name);
                 _enabled = false;
                 _rigidbody.velocity = Vector2.zero;
 
@@ -67,6 +68,21 @@ public class DrillScript : MonoBehaviour
                 if(tunnel != null){
                     tunnel._tunnels.Add(this._tunnel);
                     tunnel._invertedTunnels.Add(this._tunnel);
+                    _tunnel._tunnels.Add(tunnel);
+
+                    if(tunnel._filledWithWater){
+                        _tunnel.FillWithWater(true);
+                    }
+                }
+                else{
+                    CityNode cityNode = col.transform.parent.GetComponent<CityNode>();
+                    if(col.gameObject.name == "Drill Node Collider"){
+                        _tunnel._cities.Add(cityNode);
+
+                        if(cityNode._filledWithWater){
+                            _tunnel.FillWithWater(true);
+                        }
+                    }
                 }
 
                 Destroy(this.gameObject);
@@ -89,7 +105,7 @@ public class DrillScript : MonoBehaviour
         _tunnelRenderer.material.SetVector("_Tilling", new Vector4(Mathf.InverseLerp(0, 100, Vector3.Distance(origin, destination) * 4), 1, 0, 0));
         List<Vector2> colliderPoints = new List<Vector2>();
         colliderPoints.Add(Vector2.zero);
-        colliderPoints.Add(new Vector2(origin.x - destination.x, origin.y - destination.y));
+        colliderPoints.Add(this.transform.InverseTransformPoint(origin));
         _collider.SetPoints(colliderPoints);
         _tunnelRenderer.SetPosition(0, origin);
         _tunnelRenderer.SetPosition(1, destination);

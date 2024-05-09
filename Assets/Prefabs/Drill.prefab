@@ -294,7 +294,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.64, y: 0.76}
+  m_Size: {x: 0.47, y: 0.54}
   m_EdgeRadius: 0
 --- !u!1 &4050860698555055504
 GameObject:
@@ -9973,6 +9973,10 @@ PrefabInstance:
       value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 3062585508488095103, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
+      propertyPath: m_Positions.Array.data[0].x
+      value: 0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062585508488095103, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
       propertyPath: m_Positions.Array.data[0].y
       value: 0
       objectReference: {fileID: 0}
@@ -10047,6 +10051,10 @@ PrefabInstance:
     - target: {fileID: 8405597709084989166, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
       propertyPath: m_Points.Array.data[1].y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588051646847459517, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
+      propertyPath: m_Name
+      value: Thin Collider Tunnel Drill
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

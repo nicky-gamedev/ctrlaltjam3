@@ -14,6 +14,8 @@ public class TunnelScript : MonoBehaviour
 
     public bool _fillingWithWater = false;
 
+    public bool _filledWithWater = false;
+
     Sequence _sequence;
 
     public void FillWithWater(bool inverted){
@@ -32,6 +34,8 @@ public class TunnelScript : MonoBehaviour
         _sequence.Insert(0, _lineRenderer.material.DOFloat(-0.08f, "_Percentage_Add", 2 * (_tunnels.Count + _cities.Count)).SetEase(Ease.Linear));
     
         _sequence.OnComplete(()=>{
+            _filledWithWater = true;
+
             foreach (CityNode city in _cities){
                 if(!city._fillingWithWater){
                     city.FillWithWater();

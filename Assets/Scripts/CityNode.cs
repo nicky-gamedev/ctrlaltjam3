@@ -33,6 +33,9 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
     DrillScript _currentDrill;
 
     public bool _fillingWithWater = false;
+
+    public bool _filledWithWater = false;
+
     public bool _aimingDrill = false;
 
     [HideInInspector] public float _constructingProgress;
@@ -63,6 +66,7 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
     public void FillWithWater(){
         _fillingWithWater = true;
         _waterFill.Fill(()=>{
+            _filledWithWater = true;
             _cityNodesHolder.RemoveCity(this);
             _cityNodesHolder.DoneConstructing(this);
             _sequence = DOTween.Sequence();
