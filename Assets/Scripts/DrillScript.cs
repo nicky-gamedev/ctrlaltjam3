@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DrillScript : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class DrillScript : MonoBehaviour
     [SerializeField] private LineRenderer _waterRenderer;
 
     [SerializeField] private EdgeCollider2D _collider;
+
+    
+    [SerializeField] private UnityEvent _onLaunch = new UnityEvent();
 
     public SpriteRenderer _spriteRenderer;
 
@@ -36,6 +40,7 @@ public class DrillScript : MonoBehaviour
         _ignoreColliders = ignoreColliders;
 
         _initialPos = transform.position;
+
         _tunnelRenderer.material = new Material(_tunnelRenderer.material);
         _waterRenderer.material = new Material(_waterRenderer.material);
 
@@ -43,6 +48,7 @@ public class DrillScript : MonoBehaviour
         _tunnelRenderer.material.SetFloat("_SineValue1", 35);
         _waterRenderer.material.SetFloat("_Rotate", 90);
         _waterRenderer.material.SetFloat("_SineValue1", 35);
+        _onLaunch.Invoke();
     }
 
     public void OnTriggerEnter2D(Collider2D col){

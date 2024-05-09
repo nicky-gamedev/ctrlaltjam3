@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 using static UnityEngine.GraphicsBuffer;
 using UnityEngine.UIElements;
 using System;
+using UnityEngine.Events;
 
 public class CityNode : MonoBehaviour, IPointerDownHandler
 {
@@ -129,7 +130,7 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
             direction = direction.normalized;
 
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            _currentDrill.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            _currentDrill.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 
             float distance = Vector2.Distance(transform.position, mousePos);
             Vector3 newPosition = transform.position + Quaternion.AngleAxis(angle, Vector3.forward) * new Vector3(_drillDistance, 0, 0);
@@ -144,6 +145,7 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
         }
     }
 
+    [SerializeField] private UnityEvent onDrillShoot = new UnityEvent();
     public void ShootDrill(Vector3 mousePosition)
     {
         if(_currentDrill._ableToShoot){
@@ -172,6 +174,7 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
             _currentDrill = null;
             _cityDrillCollider.enabled = false;
             _aimingDrill = false;
+            onDrillShoot.Invoke();
         }
     }
 }
