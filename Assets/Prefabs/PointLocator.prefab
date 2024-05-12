@@ -48,7 +48,7 @@ EdgeCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -169,7 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f110c1071d810af409f5d88637c21962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentCityNode: {fileID: 0}
 --- !u!50 &6474110402515310690
 Rigidbody2D:
   serializedVersion: 4

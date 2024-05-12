@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -17,9 +18,9 @@ public class DrillScript : MonoBehaviour
 
     public TunnelScript _tunnel;
 
-    [SerializeField] private EdgeCollider2D _collider;
+    [SerializeField] private BoxCollider2D _collider;
 
-    [SerializeField] private EdgeCollider2D _miniColider;
+    [SerializeField] private BoxCollider2D _miniColider;
 
     
     [SerializeField] private UnityEvent _onLaunch = new UnityEvent();
@@ -60,15 +61,30 @@ public class DrillScript : MonoBehaviour
             }
         }
 
+        if(col.gameObject.name == "Thin Collider Tunnel Drill"){
+            if(_enabled){
+                TunnelScript tunnel = col.transform.parent.parent.GetComponent<TunnelScript>(); 
+                if(tunnel != null){
+                    tunnel._tunnels.Add(_tunnel);
+                    tunnel._invertedTunnels.Add(_tunnel);
+                    _tunnel._tunnels.Add(tunnel);
+
+                    if(tunnel._filledWithWater){
+                        _tunnel.FillWithWater(true);
+                    }
+                }
+            }
+        }
+
         if(col.gameObject.name == "Thin Collider Tunnel" || col.gameObject.name == "Drill Node Collider"){
             if(_enabled){
                 _enabled = false;
                 _rigidbody.velocity = Vector2.zero;
 
-                TunnelScript tunnel = col.transform.parent.GetComponent<TunnelScript>(); 
+                TunnelScript tunnel = col.transform.parent.parent.GetComponent<TunnelScript>(); 
                 if(tunnel != null){
-                    tunnel._tunnels.Add(this._tunnel);
-                    tunnel._invertedTunnels.Add(this._tunnel);
+                    tunnel._tunnels.Add(_tunnel);
+                    tunnel._invertedTunnels.Add(_tunnel);
                     _tunnel._tunnels.Add(tunnel);
 
                     if(tunnel._filledWithWater){
@@ -104,11 +120,17 @@ public class DrillScript : MonoBehaviour
         _tunnelRenderer.material.SetFloat("_Distance", Mathf.InverseLerp(0, 100, Vector3.Distance(origin, destination) * 4));
         _tunnel._lineRenderer.material.SetFloat("_Distance", Mathf.InverseLerp(0, 100, Vector3.Distance(origin, destination) * 4));
         _tunnelRenderer.material.SetVector("_Tilling", new Vector4(Mathf.InverseLerp(0, 100, Vector3.Distance(origin, destination) * 4), 1, 0, 0));
-        List<Vector2> colliderPoints = new List<Vector2>();
-        colliderPoints.Add(Vector2.zero);
-        colliderPoints.Add(-this.transform.InverseTransformPoint(origin));
-        _collider.SetPoints(colliderPoints);
-        _miniColider.SetPoints(colliderPoints);
+        
+        Vector2 direction = origin - destination;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+        _collider.transform.parent.rotation = rotation;
+        _miniColider.transform.parent.rotation = rotation;
+        _collider.size = new Vector2(_collider.size.x, Vector3.Distance(origin, destination) / _collider.transform.lossyScale.y);
+        _miniColider.size = new Vector2(_miniColider.size.x, Vector3.Distance(origin, destination) / _miniColider.transform.lossyScale.y);
+        _collider.transform.localPosition = new Vector3(0, _collider.size.y / 2, 0);
+        _miniColider.transform.localPosition = new Vector3(0, _miniColider.size.y / 2, 0);
+
         _tunnelRenderer.SetPosition(0, origin);
         _tunnelRenderer.SetPosition(1, destination);
         _tunnel._lineRenderer.SetPosition(0, origin);

@@ -193,8 +193,8 @@ MonoBehaviour:
   _negativeColor: {r: 1, g: 0.020754695, b: 0.020754695, a: 0.59607846}
   _tunnelRenderer: {fileID: 2661118070882149849}
   _tunnel: {fileID: 4559151036037509043}
-  _collider: {fileID: 364882319510246799}
-  _miniColider: {fileID: 2479358885768971959}
+  _collider: {fileID: 4594100435889443244}
+  _miniColider: {fileID: 4393812501278854174}
   _onLaunch:
     m_PersistentCalls:
       m_Calls:
@@ -9993,6 +9993,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: TunnelPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 5570681354796273535, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
+      propertyPath: m_Size.x
+      value: 0.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 5654122121459913421, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
+      propertyPath: m_Size.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5654122121459913421, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
+      propertyPath: m_Size.y
+      value: 0.0001
+      objectReference: {fileID: 0}
     - target: {fileID: 5689075109692517586, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
       propertyPath: _drillTunnel
       value: 1
@@ -10075,19 +10087,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8173255913822820930, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
   m_PrefabInstance: {fileID: 8194013776381707105}
   m_PrefabAsset: {fileID: 0}
---- !u!68 &364882319510246799 stripped
-EdgeCollider2D:
-  m_CorrespondingSourceObject: {fileID: 8405597709084989166, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
-  m_PrefabInstance: {fileID: 8194013776381707105}
-  m_PrefabAsset: {fileID: 0}
---- !u!68 &2479358885768971959 stripped
-EdgeCollider2D:
-  m_CorrespondingSourceObject: {fileID: 6043425910287517142, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
-  m_PrefabInstance: {fileID: 8194013776381707105}
-  m_PrefabAsset: {fileID: 0}
 --- !u!120 &2661118070882149849 stripped
 LineRenderer:
   m_CorrespondingSourceObject: {fileID: 6149890505865832120, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
+  m_PrefabInstance: {fileID: 8194013776381707105}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &4393812501278854174 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5570681354796273535, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
   m_PrefabInstance: {fileID: 8194013776381707105}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &4559151036037509043 stripped
@@ -10101,3 +10108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93cfdfc6e2c28f349a58456c349c22cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &4594100435889443244 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5654122121459913421, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
+  m_PrefabInstance: {fileID: 8194013776381707105}
+  m_PrefabAsset: {fileID: 0}

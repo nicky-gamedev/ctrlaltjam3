@@ -33,7 +33,7 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private TunnelScript _tunnel;
 
-    private EdgeCollider2D _lineEdgeCollider;
+    private BoxCollider2D _boxCollider;
 
     [SerializeField] private Image _image;
 
@@ -58,7 +58,7 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         _citiesNodeHolder._enablePlaceNodeCollider?.Invoke(true);
         _line = Instantiate(_linePrefab, Vector2.zero, Quaternion.identity).GetComponent<LineRenderer>();
         _tunnel = _line.GetComponent<TunnelScript>();
-        _lineEdgeCollider = _line.transform.Find("Collider Tunnel").GetComponent<EdgeCollider2D>();
+        _boxCollider = _line.transform.Find("Colliders Big Holder/Collider Tunnel").GetComponent<BoxCollider2D>();
 
         _line.material = new Material(_line.material);
         _tunnel._lineRenderer.material = new Material(_tunnel._lineRenderer.material);
@@ -132,10 +132,15 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         _line.material.SetFloat("_Distance", Mathf.InverseLerp(0, 30, Vector3.Distance(transform.position, destination) * 4));
         _tunnel._lineRenderer.material.SetFloat("_Distance", Mathf.InverseLerp(0, 30, Vector3.Distance(transform.position, destination) * 4));
         _line.material.SetVector("_Tilling", new Vector4(Mathf.InverseLerp(0, 30, Vector3.Distance(transform.position, destination) * 4), 1, 0, 0));
-        List<Vector2> colliderPoints = new List<Vector2>();
-        colliderPoints.Add(Vector2.zero);
-        colliderPoints.Add(new Vector2(origin.x - destination.x, origin.y - destination.y));
-        _lineEdgeCollider.SetPoints(colliderPoints);
+        
+        Vector2 direction = origin - destination;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+        _boxCollider.transform.parent.rotation = rotation;
+        //_boxCollider.transform.parent.eulerAngles = new Vector3(0, 0, Mathf.Atan2(destination.y - origin.y, destination.x - origin.x) * Mathf.Rad2Deg);
+        _boxCollider.size = new Vector2(_boxCollider.size.x, Vector3.Distance(origin, destination) * 0.8f / _boxCollider.transform.lossyScale.y);
+        _boxCollider.transform.localPosition = new Vector3(0, _boxCollider.size.y / 2 + (_boxCollider.size.y * 0.1f), 0);
+
         _line.SetPosition(0, origin);
         _line.SetPosition(1, destination);
         _tunnel._lineRenderer.SetPosition(0, origin);
@@ -152,10 +157,10 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             cityNode._cities.Add(_currentCityNode);
             _currentCityNode._cities.Add(cityNode);
 
-            EdgeCollider2D childCollider = _line.transform.Find("Thin Collider Tunnel").GetComponent<EdgeCollider2D>();
-            List<Vector2> points = new List<Vector2>();
-            _lineEdgeCollider.GetPoints(points);
-            childCollider.SetPoints(points);
+            BoxCollider2D childCollider = _line.transform.Find("Colliders Small Holder/Thin Collider Tunnel").GetComponent<BoxCollider2D>();
+            childCollider.transform.parent.rotation = _boxCollider.transform.parent.rotation;
+            childCollider.size = new Vector2(childCollider.size.x, _boxCollider.size.y);
+            childCollider.transform.localPosition = new Vector3(0, childCollider.size.y / 2 + (childCollider.size.y * 0.1f), 0);
 
             cityNode._paths.Add(_line);
             _currentCityNode._paths.Add(_line);
