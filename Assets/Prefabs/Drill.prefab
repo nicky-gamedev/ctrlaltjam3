@@ -194,6 +194,7 @@ MonoBehaviour:
   _tunnelRenderer: {fileID: 2661118070882149849}
   _tunnel: {fileID: 4559151036037509043}
   _collider: {fileID: 364882319510246799}
+  _miniColider: {fileID: 2479358885768971959}
   _onLaunch:
     m_PersistentCalls:
       m_Calls:
@@ -10046,11 +10047,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8405597709084989166, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
       propertyPath: m_EdgeRadius
-      value: 0.2
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 8405597709084989166, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
+      propertyPath: m_Points.Array.data[0].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8405597709084989166, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
+      propertyPath: m_Points.Array.data[1].x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8405597709084989166, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
       propertyPath: m_Points.Array.data[1].y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8588051646847459517, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
       propertyPath: m_Name
@@ -10069,6 +10078,11 @@ Transform:
 --- !u!68 &364882319510246799 stripped
 EdgeCollider2D:
   m_CorrespondingSourceObject: {fileID: 8405597709084989166, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
+  m_PrefabInstance: {fileID: 8194013776381707105}
+  m_PrefabAsset: {fileID: 0}
+--- !u!68 &2479358885768971959 stripped
+EdgeCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6043425910287517142, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
   m_PrefabInstance: {fileID: 8194013776381707105}
   m_PrefabAsset: {fileID: 0}
 --- !u!120 &2661118070882149849 stripped

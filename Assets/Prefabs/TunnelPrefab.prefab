@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3257964840360659240}
   - component: {fileID: 8405597709084989166}
+  - component: {fileID: 3761851911639152539}
+  - component: {fileID: 1098580905660794141}
   m_Layer: 0
   m_Name: Collider Tunnel
   m_TagString: Untagged
@@ -67,12 +69,55 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0.05
   m_Points:
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
+  - {x: -0.5, y: 0}
+  - {x: 0.5, y: 0}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!50 &3761851911639152539
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701517084913266176}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &1098580905660794141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701517084913266176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f26ec3bc7419571498784134c536dae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 8405597709084989166}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &4170513525406333460
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,10 +407,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lineRenderer: {fileID: 3062585508488095103}
+  _colliderTunnel: {fileID: 1098580905660794141}
+  _waterMultidirectional: {fileID: 2100000, guid: 85db3f7e70c79cd40ba8e3e58bc39b36, type: 2}
+  _multidirectional: 0
   _cities: []
   _tunnels: []
   _invertedTunnels: []
+  _drillTunnel: 0
   _fillingWithWater: 0
+  _filledWithWater: 0
 --- !u!1 &8588051646847459517
 GameObject:
   m_ObjectHideFlags: 0

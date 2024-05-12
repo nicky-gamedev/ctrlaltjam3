@@ -19,6 +19,8 @@ public class DrillScript : MonoBehaviour
 
     [SerializeField] private EdgeCollider2D _collider;
 
+    [SerializeField] private EdgeCollider2D _miniColider;
+
     
     [SerializeField] private UnityEvent _onLaunch = new UnityEvent();
 
@@ -60,7 +62,6 @@ public class DrillScript : MonoBehaviour
 
         if(col.gameObject.name == "Thin Collider Tunnel" || col.gameObject.name == "Drill Node Collider"){
             if(_enabled){
-                Debug.Log(col.transform.parent.gameObject.name);
                 _enabled = false;
                 _rigidbody.velocity = Vector2.zero;
 
@@ -105,8 +106,9 @@ public class DrillScript : MonoBehaviour
         _tunnelRenderer.material.SetVector("_Tilling", new Vector4(Mathf.InverseLerp(0, 100, Vector3.Distance(origin, destination) * 4), 1, 0, 0));
         List<Vector2> colliderPoints = new List<Vector2>();
         colliderPoints.Add(Vector2.zero);
-        colliderPoints.Add(this.transform.InverseTransformPoint(origin));
+        colliderPoints.Add(-this.transform.InverseTransformPoint(origin));
         _collider.SetPoints(colliderPoints);
+        _miniColider.SetPoints(colliderPoints);
         _tunnelRenderer.SetPosition(0, origin);
         _tunnelRenderer.SetPosition(1, destination);
         _tunnel._lineRenderer.SetPosition(0, origin);
