@@ -8,6 +8,8 @@ public class TunnelScript : MonoBehaviour
 {
     public LineRenderer _lineRenderer;
 
+    public LineRenderer _lineRendererTunnel;
+
     public ColliderTunnel _colliderTunnel;
 
     public Material _waterMultidirectional;
@@ -27,9 +29,12 @@ public class TunnelScript : MonoBehaviour
     Sequence _sequence;
 
     public void FillWithWater(bool inverted){
+        Debug.Log("Aspargo Legal Cheguei! " + gameObject.name);
         if(_fillingWithWater){
+            Debug.Log("Aspargo Legal Sai! " + gameObject.name);
             return;
         }
+        Debug.Log("Aspargo Legal passei! " + gameObject.name);
 
         _fillingWithWater = true;
 
@@ -59,8 +64,9 @@ public class TunnelScript : MonoBehaviour
 
             foreach (TunnelScript tunnel in _tunnels)
             {
-                Debug.Log("Aspargo legal 000: " + gameObject.name);
+                Debug.Log("Aspargo legal origem: " + gameObject.name + " : " + tunnel.name);
                 if(!tunnel._fillingWithWater){
+                    Debug.Log("Aspargo legal filling water false: : " + gameObject.name + " : " + tunnel.name + " : " + _colliderTunnel._collidedTunnels.Count);
                     foreach (KeyValuePair<Collider2D, Vector2> collidedTunnel in _colliderTunnel._collidedTunnels)
                     {
                         Debug.Log("Aspargo legal 0: " + gameObject.name);
@@ -111,13 +117,16 @@ public class TunnelScript : MonoBehaviour
         _lineRenderer.material.SetFloat("_FinalAlpha", WaterFill._waterAlpha);
         _lineRenderer.material.SetFloat("_Percentage1Start", inverted ? middlePos : 1 - middlePos);
         _lineRenderer.material.SetFloat("_Percentage2Start", inverted ? 1 - middlePos : middlePos);
+        _lineRenderer.material.SetFloat("_Distance", _lineRendererTunnel.material.GetFloat("_Distance"));
 
         _sequence = DOTween.Sequence();
-        _lineRenderer.material.SetFloat("_Percentage", Remap(0, 1 - middlePos, 0, 0.75f, 1));
-        _lineRenderer.material.SetFloat("_Percentage2", Remap(0, middlePos, 0, 0.75f, 1));
+        _lineRenderer.material.SetFloat("_Percentage", 1.5f * middlePos);
+        _lineRenderer.material.SetFloat("_Percentage2", 1.5f * (1 - middlePos));
         _lineRenderer.material.SetFloat("_Percentage_Add", 0);
         _lineRenderer.material.SetFloat("_Percentage_Add_2", 0);
-        _sequence.Insert(0, _lineRenderer.material.DOFloat(0f, "_Percentage", 2 * (middlePos) * (_tunnels.Count + _cities.Count)).SetEase(Ease.Linear));
+        _lineRenderer.material.SetFloat("_SineValue1", _drillTunnel ? 35 : 24.61f);
+        
+        _sequence.Insert(0, _lineRenderer.material.DOFloat(0f, "_Percentage", 2 * (1 - middlePos) * (_tunnels.Count + _cities.Count)).SetEase(Ease.Linear));
         _sequence.Insert(0, _lineRenderer.material.DOFloat(0f, "_Percentage2", 2 * (1 - middlePos) * (_tunnels.Count + _cities.Count)).SetEase(Ease.Linear));
         _sequence.Insert(0, _lineRenderer.material.DOFloat(-0.08f, "_Percentage_Add", 2 * (_tunnels.Count + _cities.Count)).SetEase(Ease.Linear));
         _sequence.Insert(0, _lineRenderer.material.DOFloat(-0.15f, "_Percentage_Add_2", 2 * (_tunnels.Count + _cities.Count)).SetEase(Ease.Linear));

@@ -87,7 +87,7 @@ Material:
     - _Percentage_Add: -0.08
     - _Percentage_Add_2: -0.15
     - _Rotate: 0
-    - _SineValue1: 24.61
+    - _SineValue1: 35
     - _SineValue2: 0.05
     - _SineValue3: 0.04
     - _Smoothstep: 0.021

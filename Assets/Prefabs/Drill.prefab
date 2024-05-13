@@ -9991,7 +9991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4486612181594373395, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
       propertyPath: m_Name
-      value: TunnelPrefab
+      value: TunnelPrefab Drill
       objectReference: {fileID: 0}
     - target: {fileID: 5570681354796273535, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
       propertyPath: m_Size.x

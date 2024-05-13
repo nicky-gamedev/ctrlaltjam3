@@ -76,7 +76,7 @@ MonoBehaviour:
   _collider: {fileID: 5654122121459913421}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 64
 --- !u!61 &5654122121459913421
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -443,6 +443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lineRenderer: {fileID: 3062585508488095103}
+  _lineRendererTunnel: {fileID: 6149890505865832120}
   _colliderTunnel: {fileID: 1098580905660794141}
   _waterMultidirectional: {fileID: 2100000, guid: 85db3f7e70c79cd40ba8e3e58bc39b36, type: 2}
   _multidirectional: 0

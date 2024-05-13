@@ -15,16 +15,14 @@ public class ColliderTunnel : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.name == "Collider Tunnel" || col.gameObject.name == "Collider Mini Tunnel"){
             if(!_collidedTunnels.ContainsKey(col)){
-                List<Vector2> points = new List<Vector2>();
                 Vector3 initialPos = transform.parent.position;
                 Vector3 finalPos = initialPos + col.bounds.center;
-                Debug.DrawLine(initialPos, finalPos - initialPos, Color.white, 20f, true); 
                 RaycastHit2D[] hits = Physics2D.RaycastAll(initialPos, finalPos - initialPos, Vector2.Distance(initialPos, finalPos));
                 if(hits != null && hits.Length > 0){
                     foreach(RaycastHit2D hit in hits)
                     {
                         if(hit.collider == col){
-                            Debug.Log("Aspargo 6: " + col.gameObject.name);
+                            Debug.Log("Aspargo 6: " + col.transform.parent.parent.gameObject.name);
                             _collidedTunnels.Add(col, hit.point);
 
                             if(col.gameObject.name == "Collider Mini Tunnel"){
@@ -40,7 +38,8 @@ public class ColliderTunnel : MonoBehaviour
     private void OnTriggerExit2D(Collider2D col){
         if(col.gameObject.name == "Collider Tunnel" || col.gameObject.name == "Collider Mini Tunnel"){
             if(_collidedTunnels.ContainsKey(col)){
-                _collidedTunnels.Remove(col);
+                Debug.Log("Aspargo 7: " + col.transform.parent.parent.gameObject.name + " : " + gameObject.transform.parent.parent.name);
+                //_collidedTunnels.Remove(col);
             }
         }
     }
