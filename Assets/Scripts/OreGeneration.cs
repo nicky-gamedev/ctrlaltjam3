@@ -35,8 +35,8 @@ public class OreGeneration : MonoBehaviour
         {
             for (int j = 0; j < chunkDimensions.y; j++)
             {
-                float xCoord = i / width * scale;
-                float yCoord = j / height* scale;
+                float xCoord = i / width * scale * Random.value;
+                float yCoord = j / height* scale * Random.value;
                 float sample = Mathf.PerlinNoise(xCoord, yCoord);
                 Debug.Log(sample);
                 if(sample >= oreRarity)

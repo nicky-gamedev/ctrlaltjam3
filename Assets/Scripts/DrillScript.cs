@@ -92,12 +92,21 @@ public class DrillScript : MonoBehaviour
                     }
                 }
                 else{
-                    CityNode cityNode = col.transform.parent.GetComponent<CityNode>();
+                    
                     if(col.gameObject.name == "Drill Node Collider"){
-                        _tunnel._cities.Add(cityNode);
 
-                        if(cityNode._filledWithWater){
-                            _tunnel.FillWithWater(true);
+                        if(col.transform.parent.TryGetComponent<CityNode>(out CityNode cityNode))
+                        {
+                            _tunnel._cities.Add(cityNode);
+
+                            if (cityNode._filledWithWater)
+                            {
+                                _tunnel.FillWithWater(true);
+                            }
+                        }
+                        else if(col.transform.parent.name.Contains("Ore"))
+                        {
+                            Destroy(col.transform.parent.gameObject);
                         }
                     }
                 }
