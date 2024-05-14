@@ -18,6 +18,8 @@ public class MoveColliders : MonoBehaviour
     float _timerDown = 0;
 
     [SerializeField] float _timerSpeed = 0.1f;
+
+    [SerializeField] OreGeneration _oreGeneration;
     
     void FixedUpdate ()
     {
@@ -37,6 +39,11 @@ public class MoveColliders : MonoBehaviour
                     _timerUp = Mathf.Clamp(_timerUp - Time.fixedDeltaTime * _timerSpeed, 0, 1);
                     _timerDown = Mathf.Clamp(_timerDown + Time.fixedDeltaTime * _timerSpeed, 0, 1);
                     Camera.main.transform.position += Vector3.down * Time.deltaTime * Mathf.Lerp(0, _speed, _timerDown);
+
+                    if(Camera.main.transform.position.y <= _oreGeneration.NextChunk)
+                    {
+                        _oreGeneration.GenerateChunk();
+                    }
                 }
                 else{
                     _timerUp = Mathf.Clamp(_timerUp - Time.fixedDeltaTime * _timerSpeed, 0, 1);

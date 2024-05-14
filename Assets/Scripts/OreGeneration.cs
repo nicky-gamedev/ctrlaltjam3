@@ -19,6 +19,8 @@ public class OreGeneration : MonoBehaviour
     [SerializeField] private float width;
     [SerializeField] private float height;
 
+    public float NextChunk => chunkPosition.y;
+
     private void Start()
     {
         for (int i = 0; i < initialChunks; i++)
