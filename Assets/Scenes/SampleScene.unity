@@ -590,7 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6124a5d19e3e99479ee7f0a4787dff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _peopleManager: {fileID: 1073089795}
+  _peopleManager: {fileID: 0}
 --- !u!1 &879701530
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,7 +704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _peopleAmount: 10
-  _constructSpeedperPerson: 0.001
+  _constructSpeedperPerson: 0.1
 --- !u!1 &1122146646
 GameObject:
   m_ObjectHideFlags: 0
