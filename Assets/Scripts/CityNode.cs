@@ -19,6 +19,8 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
 
     public List<CityNode> _cities;
 
+    public OreManager _oreManager; 
+
     [SerializeField] private WaterFill _waterFill;
 
     [SerializeField] private Light2D _light2D;
@@ -83,7 +85,7 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if(_fillingWithWater){
+        if(_fillingWithWater || (_constructingProgress > 0 && _constructingProgress < 1) || _oreManager._OreAmount == 0){
             return;
         }
 
@@ -134,6 +136,8 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
             var pos = Camera.main.ScreenToWorldPoint(mousePosition);
             pos.z = 0;
 
+            _oreManager._OreAmount -= 1;
+
             //_currentDrill.transform.position = transform.position;
             _currentDrill.transform.eulerAngles = Vector3.zero;
             Vector3 relative = transform.InverseTransformPoint(pos);
@@ -153,8 +157,8 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
                 }
             }
 
-            _currentDrill.InitializeLaunch(ignoreColliders);
-            Destroy(_currentDrill.gameObject, 5);
+            _currentDrill.InitializeLaunch(ignoreColliders, _oreManager, 2.5f);
+            
             _currentDrill = null;
             _cityDrillCollider.enabled = false;
             _aimingDrill = false;

@@ -16,5 +16,5 @@ public class PeopleManager : MonoBehaviour
     }
 
     // This could be per node
-    public float _constructSpeedperPerson = 0.1f;
+    public float _constructSpeedperPerson = 0.05f;
 }

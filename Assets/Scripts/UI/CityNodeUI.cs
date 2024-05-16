@@ -13,6 +13,10 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     private Vector2 _uiPosition;
 
+    [SerializeField] private int _amountOfOreRequired;
+
+    [SerializeField] private OreManager _oreManager;
+
     [HideInInspector] public List<PointLocatorColliderLine> _collidedLines = new List<PointLocatorColliderLine>();
 
     [HideInInspector] public List<CityNode> _collidedCityAreas = new List<CityNode>();
@@ -78,6 +82,8 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
 
     private void Update(){
+        _image.color = _amountOfOreRequired > _oreManager._OreAmount ? _negativeColor : _holdingColor;
+
         if(_followingMouse){
             _onMouseUp = false;
             transform.position = Input.mousePosition;
@@ -120,7 +126,7 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 }
             }
 
-            _image.color = _currentCityNode == null ? _negativeColor : _holdingColor;
+            _image.color = _currentCityNode == null || _amountOfOreRequired > _oreManager._OreAmount ? _negativeColor : _holdingColor;
         }
         else{
             _image.color = _negativeColor;
@@ -150,7 +156,8 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerUp(PointerEventData eventData){
         _onMouseUp = true;
 
-        if(_currentCityNode){
+        if(_currentCityNode && _amountOfOreRequired <= _oreManager._OreAmount){
+            _oreManager._OreAmount -= _amountOfOreRequired;
             Vector3 point = Camera.main.ScreenToWorldPoint(new Vector3(transform.position.x, transform.position.y, Camera.main.nearClipPlane));
             point.z = 0;
             CityNode cityNode = Instantiate(_cityPrefab, point, Quaternion.identity).GetComponent<CityNode>();
@@ -179,6 +186,8 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             light2d.intensity = 0f;
 
             cityNode._cityNodesHolder = _citiesNodeHolder;
+
+            cityNode._oreManager = _oreManager;
 
             cityNode._cityNodesHolder.ConstructingCity(cityNode);
             cityNode.onNodePlace?.Invoke();

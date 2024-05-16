@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering.Universal;
 
 public class DrillScript : MonoBehaviour
 {
@@ -22,6 +24,7 @@ public class DrillScript : MonoBehaviour
 
     [SerializeField] private BoxCollider2D _miniColider;
 
+    [HideInInspector] public OreManager _oreManager;
     
     [SerializeField] private UnityEvent _onLaunch = new UnityEvent();
 
@@ -35,10 +38,18 @@ public class DrillScript : MonoBehaviour
 
     private List<Collider2D> _ignoreColliders = new List<Collider2D>();
 
-    private Vector3 _initialPos; 
+    private Vector3 _initialPos;
 
-    public void InitializeLaunch(List<Collider2D> ignoreColliders){
+    [SerializeField] private Light2D _light2D;
+
+    [SerializeField] private AnimationCurve _animationCurve;
+
+    DG.Tweening.Sequence _sequence;
+
+    public void InitializeLaunch(List<Collider2D> ignoreColliders, OreManager oreManager, float duration){
         _enabled = true;
+
+        _oreManager = oreManager;
 
         _ignoreColliders = ignoreColliders;
 
@@ -51,7 +62,13 @@ public class DrillScript : MonoBehaviour
         _tunnelRenderer.material.SetFloat("_SineValue1", 35);
         _tunnel._lineRenderer.material.SetFloat("_Rotate", 90);
         _tunnel._lineRenderer.material.SetFloat("_SineValue1", 35);
+
+        _sequence = DOTween.Sequence();
+        _sequence.Append(DOTween.To(x => {_light2D.intensity = x;}, 0f, 1f, duration).SetEase(_animationCurve));
+
         _onLaunch.Invoke();
+
+        Destroy(this.gameObject, duration);
     }
 
     public void OnTriggerEnter2D(Collider2D col){
@@ -106,6 +123,7 @@ public class DrillScript : MonoBehaviour
                         }
                         else if(col.transform.parent.name.Contains("Ore"))
                         {
+                            _oreManager._OreAmount += UnityEngine.Random.Range(3, 4);
                             Destroy(col.transform.parent.gameObject);
                         }
                     }

@@ -89,11 +89,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba19f2579ec6e145a71f8260a942671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _amountOfOreRequired: 2
+  _oreManager: {fileID: 0}
   _collidedLines: []
   _collidedCityAreas: []
   _cityPrefab: {fileID: 4030052898156565997, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
   _pointLocatorPrefab: {fileID: 770471910121236888, guid: ce6e3bb4d4823544b9efe1858bfb7f13, type: 3}
   _linePrefab: {fileID: 4486612181594373395, guid: cae55d497a36f84418e9cdf58ff8f307, type: 3}
+  _citiesNodeHolder: {fileID: 0}
   _image: {fileID: 4833568476095768788}
   _defaultColor: {r: 1, g: 1, b: 1, a: 1}
   _holdingColor: {r: 1, g: 1, b: 1, a: 0.5294118}
