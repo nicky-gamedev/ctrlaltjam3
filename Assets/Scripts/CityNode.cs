@@ -22,8 +22,7 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
     public OreManager _oreManager; 
 
     [SerializeField] private WaterFill _waterFill;
-
-    [SerializeField] private Light2D _light2D;
+    [SerializeField] private NodeLightController _nodeLightController;
     [SerializeField] private DrillScript _drillPrefab;
 
     [SerializeField] private Collider2D _placeNodeCollider;
@@ -52,7 +51,8 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
 
     public void DoneConstructing(){
         if(!_fillingWithWater){
-            _light2D.intensity = 1f;
+            _nodeLightController.TurnLightsOn();
+            //_light2D.intensity = 1f;
         }
     }
 
@@ -67,13 +67,12 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
     
     public void FillWithWater(){
         _fillingWithWater = true;
+        _nodeLightController.Blink();
         _waterFill.Fill(()=>{
             _filledWithWater = true;
             _cityNodesHolder.RemoveCity(this);
             _cityNodesHolder.DoneConstructing(this);
-            _sequence = DOTween.Sequence();
-            _sequence.Insert(0, DOTween.To(x => _light2D.intensity = x, 1f, 0f, 1f).OnComplete(()=>{_light2D.enabled = false;}));
-            
+         
             foreach (TunnelScript tunnel in _tunnels)
             {
                 if(!tunnel._fillingWithWater){
