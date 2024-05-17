@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Node
+    uniqueID: 1544160795
+    locked: 0
+  - name: Ore
+    uniqueID: 1646738141
+    locked: 0
+  - name: Moving Objects
+    uniqueID: 1065862773
+    locked: 0
