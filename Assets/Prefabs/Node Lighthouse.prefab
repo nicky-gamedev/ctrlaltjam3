@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &723771502242067823
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 264938644512466253, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 6.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220580131024617450, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 11.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759663731309416770, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_Color.b
+      value: 0.22857237
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759663731309416770, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8715135
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759663731309416770, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_Color.r
+      value: 0.98490566
+      objectReference: {fileID: 0}
+    - target: {fileID: 2511902244105328609, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 7.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2638051896856183826, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2638051896856183826, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2638051896856183826, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2638051896856183826, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2638051896856183826, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2638051896856183826, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2638051896856183826, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2638051896856183826, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2638051896856183826, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2638051896856183826, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2745053208508225554, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 1.9542435
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030052898156565997, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_Name
+      value: Node Lighthouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465045154142024353, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465045154142024353, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465045154142024353, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946274766495736462, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 6.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8709992718977906294, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: _onNodeBroken.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8709992718977906294, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: _onNodeConstructed.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8709992718977906294, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: _onNodeBroken.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8709992718977906294, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: _onNodeBroken.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8709992718977906294, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: _onNodeConstructed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8709992718977906294, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: _onNodeBroken.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnDestroy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8709992718977906294, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: _onNodeConstructed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8709992718977906294, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: _onNodeConstructed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnConstruct
+      objectReference: {fileID: 0}
+    - target: {fileID: 8709992718977906294, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: _onNodeBroken.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NodeHouse, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8709992718977906294, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: _onNodeConstructed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NodeHouse, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8709992718977906294, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: _onNodeBroken.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8709992718977906294, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: _onNodeConstructed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}

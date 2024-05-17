@@ -7,13 +7,20 @@ using UnityEngine;
 
 public class CityNodesHolder : MonoBehaviour
 {
-    private List<CityNode> _cityNodes = new List<CityNode>();
+    [SerializeField] CityNode _initialNode;
 
-    private List<CityNode> _constructingNodes = new List<CityNode>();
+    [SerializeField] private List<CityNode> _cityNodes = new List<CityNode>();
+
+    [SerializeField] private List<CityNode> _constructingNodes = new List<CityNode>();
 
     [SerializeField] private PeopleManager _peopleManager;
 
     public Action<bool> _enablePlaceNodeCollider;
+
+    IEnumerator Start(){
+        yield return new WaitForSeconds(45);
+        _initialNode.FillWithWater();
+    }
 
     public void AddCity(CityNode cityNode){
         if(!_cityNodes.Contains(cityNode)){
@@ -24,6 +31,10 @@ public class CityNodesHolder : MonoBehaviour
     public void RemoveCity(CityNode cityNode){
         if(_cityNodes.Contains(cityNode)){
             _cityNodes.Remove(cityNode);
+
+            if(_cityNodes.Count == 0){
+                Debug.Log("Game Over");
+            }
         }
     }
 

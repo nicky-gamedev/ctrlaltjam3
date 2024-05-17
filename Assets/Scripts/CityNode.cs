@@ -9,6 +9,7 @@ using static UnityEngine.GraphicsBuffer;
 using UnityEngine.UIElements;
 using System;
 using UnityEngine.Events;
+using TMPro;
 
 public class CityNode : MonoBehaviour, IPointerDownHandler
 {
@@ -46,13 +47,24 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
     DG.Tweening.Sequence _sequence;
 
     float _clickDelay;
+
+    bool _constructed = false;
     
     public UnityEvent onNodePlace = new UnityEvent();
 
+    public UnityEvent _onNodeConstructed = new UnityEvent();
+
+    public UnityEvent _onNodeBroken = new UnityEvent();
+
+    public UnityEvent _onStart = new UnityEvent();
+
+
     public void DoneConstructing(){
         if(!_fillingWithWater){
+            _constructed = true;
             _nodeLightController.TurnLightsOn();
-            //_light2D.intensity = 1f;
+            _onNodeConstructed.Invoke();
+            _cityNodesHolder.AddCity(this);
         }
     }
 
@@ -63,6 +75,7 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
     private void Start(){
         _cityNodesHolder._enablePlaceNodeCollider += EnablePlaceNodeCollider;
         EnablePlaceNodeCollider(false);
+        _onStart.Invoke();
     }
     
     public void FillWithWater(){
@@ -70,6 +83,10 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
         _nodeLightController.Blink();
         _waterFill.Fill(()=>{
             _filledWithWater = true;
+            if(_constructed){
+                _onNodeBroken.Invoke();
+            }
+
             _cityNodesHolder.RemoveCity(this);
             _cityNodesHolder.DoneConstructing(this);
          
