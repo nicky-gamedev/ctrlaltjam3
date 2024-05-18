@@ -58,6 +58,8 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
 
     public bool _initialNode = false;
 
+    [HideInInspector] public float _barrierTime = 0; 
+
 
     public void DoneConstructing(){
         if(!_fillingWithWater){
@@ -84,21 +86,23 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
     public void FillWithWater(){
         _fillingWithWater = true;
         _nodeLightController.Blink();
-        _waterFill.Fill(()=>{
-            _filledWithWater = true;
-            if(_constructed){
-                _onNodeBroken.Invoke();
-            }
-
-            _cityNodesHolder.RemoveCity(this);
-            _cityNodesHolder.DoneConstructing(this);
-         
-            foreach (TunnelScript tunnel in _tunnels)
-            {
-                if(!tunnel._fillingWithWater){
-                    tunnel.FillWithWater(_invertedTunnels.Contains(tunnel));
+        _waterFill.Fill(
+            _barrierTime > 0 ? _barrierTime : 2f, 
+            ()=>{
+                _filledWithWater = true;
+                if(_constructed){
+                    _onNodeBroken.Invoke();
                 }
-            }
+
+                _cityNodesHolder.RemoveCity(this);
+                _cityNodesHolder.DoneConstructing(this);
+            
+                foreach (TunnelScript tunnel in _tunnels)
+                {
+                    if(!tunnel._fillingWithWater){
+                        tunnel.FillWithWater(_invertedTunnels.Contains(tunnel));
+                    }
+                }
         });
     }
 

@@ -26,11 +26,11 @@ public class WaterFill : MonoBehaviour
         _spriteRenderer.material.SetFloat("_Percentage_Add", 0);
     }
 
-    public void Fill(Action endOfFillACtion){
+    public void Fill(float amountOfTime, Action endOfFillACtion){
         _sequence = DOTween.Sequence();
-        _sequence.Append(_spriteRenderer.material.DOFloat(1.2f, "_Percentage", 2).SetEase(Ease.InSine));
-        _sequence.Join(_spriteRenderer.material.DOFloat(-0.08f, "_Percentage_Add", 2).SetEase(Ease.InSine));
-        _sequence.Join(DOTween.To(x => {_light2D.intensity = x;}, 0f, 1f, 2f).SetEase(_lightsOutCurve));
+        _sequence.Append(_spriteRenderer.material.DOFloat(1.2f, "_Percentage", amountOfTime).SetEase(Ease.InSine));
+        _sequence.Join(_spriteRenderer.material.DOFloat(-0.08f, "_Percentage_Add", amountOfTime).SetEase(Ease.InSine));
+        _sequence.Join(DOTween.To(x => {_light2D.intensity = x;}, 0f, 1f, amountOfTime).SetEase(_lightsOutCurve));
         _sequence.OnComplete(()=>{endOfFillACtion.Invoke();});
     }
 }
