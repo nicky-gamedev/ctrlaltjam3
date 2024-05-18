@@ -53,8 +53,16 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private CityNode _currentCityNode;
 
-    private void Start(){
-        _uiPosition = transform.position;
+    private RectTransform _rectTransform;
+
+    IEnumerator Start(){
+        _rectTransform = GetComponent<RectTransform>();
+
+        yield return new WaitForEndOfFrame();
+
+        _uiPosition = _rectTransform.position;
+
+        Debug.Log(_uiPosition);
     }
 
     public void OnPointerDown(PointerEventData eventData){
@@ -195,7 +203,7 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             Destroy(_pointLocatorCircle.gameObject);
 
             _followingMouse = false;
-            transform.position = _uiPosition;
+            _rectTransform.position = _uiPosition;
             _image.color = _defaultColor;
 
             _currentCityNode = null;
@@ -203,7 +211,7 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
         else{
                 _followingMouse = false;
-                transform.position = _uiPosition;
+                _rectTransform.position = _uiPosition;
                 _image.color = _defaultColor;
 
                 Destroy(_pointLocatorCircle.gameObject);

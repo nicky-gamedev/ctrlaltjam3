@@ -56,7 +56,7 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
 
     public UnityEvent _onNodeBroken = new UnityEvent();
 
-    public UnityEvent _onStart = new UnityEvent();
+    public bool _initialNode = false;
 
 
     public void DoneConstructing(){
@@ -75,7 +75,10 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
     private void Start(){
         _cityNodesHolder._enablePlaceNodeCollider += EnablePlaceNodeCollider;
         EnablePlaceNodeCollider(false);
-        _onStart.Invoke();
+
+        if(_initialNode){
+            DoneConstructing();
+        }
     }
     
     public void FillWithWater(){

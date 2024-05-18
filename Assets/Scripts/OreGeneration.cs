@@ -40,7 +40,6 @@ public class OreGeneration : MonoBehaviour
                 float xCoord = i / width * scale * Random.value;
                 float yCoord = j / height* scale * Random.value;
                 float sample = Mathf.PerlinNoise(xCoord, yCoord);
-                Debug.Log(sample);
                 if(sample >= oreRarity)
                 {
                     var newOre = Instantiate(ore, root.transform);

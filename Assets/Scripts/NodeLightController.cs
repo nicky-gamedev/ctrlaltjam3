@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -9,7 +8,7 @@ public class NodeLightController : MonoBehaviour
 {
     NodeLight[] nodeLights;
     [SerializeField] Light2D[] lights;
-    void Start()
+    void Awake()
     {   
         nodeLights = GetComponentsInChildren<NodeLight>();
         
