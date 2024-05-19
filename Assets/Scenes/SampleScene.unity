@@ -1076,10 +1076,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 759402594}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 429187840}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: TogglePause
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2806,15 +2806,15 @@ PrefabInstance:
       objectReference: {fileID: 1036729223}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _defaultColor.b
-      value: 0.16470589
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _defaultColor.g
-      value: 0.96862745
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _defaultColor.r
-      value: 0.34509805
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _holdingColor.a
@@ -2822,15 +2822,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _holdingColor.b
-      value: 0.16470589
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _holdingColor.g
-      value: 0.96862745
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _holdingColor.r
-      value: 0.34509805
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _negativeColor.a
@@ -4917,27 +4917,27 @@ PrefabInstance:
       objectReference: {fileID: 1036729223}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _defaultColor.b
-      value: 0.23137257
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _defaultColor.g
-      value: 0.8705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _defaultColor.r
-      value: 0.9803922
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _holdingColor.b
-      value: 0.23137257
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _holdingColor.g
-      value: 0.8705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _holdingColor.r
-      value: 0.9803922
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _negativeColor.a
@@ -5577,27 +5577,27 @@ PrefabInstance:
       objectReference: {fileID: 1036729223}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _defaultColor.b
-      value: 0.3529412
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _defaultColor.g
-      value: 0.6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _defaultColor.r
-      value: 0.92549026
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _holdingColor.b
-      value: 0.3529412
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _holdingColor.g
-      value: 0.6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _holdingColor.r
-      value: 0.92549026
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5808419515730147476, guid: 8457a3957897fdd4a9b0ce2c866b2b3f, type: 3}
       propertyPath: _negativeColor.a
