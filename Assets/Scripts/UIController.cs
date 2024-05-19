@@ -9,7 +9,9 @@ public class UIController : MonoBehaviour
 
     public void TogglePause()
     {
-        pauseContainer.SetActive(!pauseContainer.activeSelf);
+        bool active = pauseContainer.activeSelf;
+        pauseContainer.SetActive(!active);
+        Debug.Log("pause container is now " + pauseContainer.activeSelf);
         Time.timeScale = pauseContainer.activeSelf ? 0f : 1f;
     }
 }
