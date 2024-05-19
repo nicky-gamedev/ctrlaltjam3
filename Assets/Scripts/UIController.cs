@@ -12,9 +12,4 @@ public class UIController : MonoBehaviour
         pauseContainer.SetActive(!pauseContainer.activeSelf);
         Time.timeScale = pauseContainer.activeSelf ? 0f : 1f;
     }
-
-    public void Quit()
-    {
-
-    }
 }
