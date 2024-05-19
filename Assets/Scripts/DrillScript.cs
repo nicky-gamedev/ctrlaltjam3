@@ -26,6 +26,8 @@ public class DrillScript : MonoBehaviour
 
     [HideInInspector] public OreManager _oreManager;
     
+    
+    [SerializeField] private UnityEvent _onPickup = new UnityEvent();
     [SerializeField] private UnityEvent _onLaunch = new UnityEvent();
 
     public SpriteRenderer _spriteRenderer;
@@ -46,6 +48,11 @@ public class DrillScript : MonoBehaviour
 
     DG.Tweening.Sequence _sequence;
 
+    //on start
+    void Start()
+    {
+        _onPickup.Invoke();
+    }
     public void InitializeLaunch(List<Collider2D> ignoreColliders, OreManager oreManager, float duration){
         _enabled = true;
 
@@ -65,7 +72,6 @@ public class DrillScript : MonoBehaviour
 
         _sequence = DOTween.Sequence();
         _sequence.Append(DOTween.To(x => {_light2D.intensity = x;}, 0f, 1f, duration).SetEase(_animationCurve));
-
         _onLaunch.Invoke();
 
         Destroy(this.gameObject, duration);
