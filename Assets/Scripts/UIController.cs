@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class UIController : MonoBehaviour
@@ -9,11 +10,7 @@ public class UIController : MonoBehaviour
     public void TogglePause()
     {
         pauseContainer.SetActive(!pauseContainer.activeSelf);
-    }
-
-    public void OpenSettings()
-    {
-        
+        Time.timeScale = pauseContainer.activeSelf ? 0f : 1f;
     }
 
     public void Quit()
