@@ -17,16 +17,20 @@ PrefabInstance:
       value: 11.3
       objectReference: {fileID: 0}
     - target: {fileID: 1759663731309416770, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4b22fa44729010743b2a406e922c310c, type: 3}
+    - target: {fileID: 1759663731309416770, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
       propertyPath: m_Color.b
-      value: 0.22857237
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1759663731309416770, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
       propertyPath: m_Color.g
-      value: 0.8715135
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1759663731309416770, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
       propertyPath: m_Color.r
-      value: 0.98490566
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2511902244105328609, guid: 336972a7e8d41f54f97f624a3a2b08c4, type: 3}
       propertyPath: m_PointLightOuterRadius
