@@ -16,6 +16,8 @@ public class CityNodesHolder : MonoBehaviour
 
     [SerializeField] private PeopleManager _peopleManager;
 
+    [SerializeField] private GameOverController _gameOverController;
+
     public Action<bool> _enablePlaceNodeCollider;
 
     public OreManager _oreManager;
@@ -46,7 +48,7 @@ public class CityNodesHolder : MonoBehaviour
             _cityNodes.Remove(cityNode);
 
             if(_cityNodes.Count == 0){
-                Debug.Log("Game Over");
+                _gameOverController.StartGameOver();
             }
         }
     }
