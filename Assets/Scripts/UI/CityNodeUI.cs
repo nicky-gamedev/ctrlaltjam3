@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
 using System;
+using UnityEngine.Events;
 
 public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
@@ -54,6 +55,8 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private CityNode _currentCityNode;
 
     private RectTransform _rectTransform;
+
+    [SerializeField] private UnityEvent _constructedCity;
 
     IEnumerator Start(){
         _rectTransform = GetComponent<RectTransform>();
@@ -208,6 +211,8 @@ public class CityNodeUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
             _currentCityNode = null;
             _citiesNodeHolder._enablePlaceNodeCollider?.Invoke(false);
+
+            _constructedCity.Invoke();
         }
         else{
                 _followingMouse = false;

@@ -112,10 +112,12 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
             return;
         }
 
+        /*
         if(eventData.button == PointerEventData.InputButton.Right){
             FillWithWater();
             return;
         }
+        */
 
         if(eventData.button == PointerEventData.InputButton.Left && !_aimingDrill)
         {

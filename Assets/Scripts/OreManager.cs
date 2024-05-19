@@ -10,6 +10,12 @@ public class OreManager : MonoBehaviour
 
     [SerializeField] private TMP_Text _oreAmountText;
 
+    [SerializeField] private float _timerPassiveOre = 10f;
+
+    public bool _allowEarnMoreOrePassive = false;
+
+    private float _timer = 0f;
+
     private void Start(){
         UpdateOreAmountText();
     }
@@ -25,6 +31,17 @@ public class OreManager : MonoBehaviour
         set{
             _oreAmount = value;
             UpdateOreAmountText();
+        }
+    }
+
+    private void Update(){
+        if(_allowEarnMoreOrePassive){
+            _timer += Time.deltaTime;
+
+            if(_timer >= _timerPassiveOre){
+                _timer = 0f;
+                _OreAmount += 1;
+            }
         }
     }
 }

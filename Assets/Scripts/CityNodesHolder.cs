@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Xml.Serialization;
 
 public class CityNodesHolder : MonoBehaviour
 {
@@ -17,7 +18,19 @@ public class CityNodesHolder : MonoBehaviour
 
     public Action<bool> _enablePlaceNodeCollider;
 
-    IEnumerator Start(){
+    public OreManager _oreManager;
+
+    private bool _courotineCalled = false;
+
+    public void ConstructedCity(){
+        if(!_courotineCalled){
+            _courotineCalled = true;
+            _oreManager._allowEarnMoreOrePassive = true;
+            StartCoroutine(CourotineStartWaterFill());
+        }
+    }
+
+    IEnumerator CourotineStartWaterFill(){
         yield return new WaitForSeconds(45);
         _initialNode.FillWithWater();
     }
