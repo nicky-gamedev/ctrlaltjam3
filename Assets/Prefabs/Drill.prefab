@@ -166,7 +166,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _spriteRenderer: {fileID: 0}
+  _spriteRenderer: {fileID: 757489297817118329}
   _enabled: 0
   _ableToShoot: 0
   _light2D: {fileID: 7685129388925742821}

@@ -572,8 +572,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Drag the nodes\nto build deeper.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 98afa76f3f22f0a4496ed637732344d6, type: 2}
+  m_sharedMaterial: {fileID: -625602788554693033, guid: 98afa76f3f22f0a4496ed637732344d6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -662,7 +662,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: -625602788554693033, guid: 98afa76f3f22f0a4496ed637732344d6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -743,8 +743,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Constructing nodes\ncosts <b>Ore</b>.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 98afa76f3f22f0a4496ed637732344d6, type: 2}
+  m_sharedMaterial: {fileID: -625602788554693033, guid: 98afa76f3f22f0a4496ed637732344d6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -833,7 +833,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: -625602788554693033, guid: 98afa76f3f22f0a4496ed637732344d6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4277,8 +4277,8 @@ MonoBehaviour:
   m_text: Click with the left\nmouse button to\nshoot a drill.\nIt collects <b>Ore</b>\nand
     costs one <b>Ore</b>\nto shoot
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 98afa76f3f22f0a4496ed637732344d6, type: 2}
+  m_sharedMaterial: {fileID: -625602788554693033, guid: 98afa76f3f22f0a4496ed637732344d6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4367,7 +4367,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: -625602788554693033, guid: 98afa76f3f22f0a4496ed637732344d6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5352,8 +5352,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Water will soon fill\nyour colony.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 98afa76f3f22f0a4496ed637732344d6, type: 2}
+  m_sharedMaterial: {fileID: -625602788554693033, guid: 98afa76f3f22f0a4496ed637732344d6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5442,7 +5442,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: -625602788554693033, guid: 98afa76f3f22f0a4496ed637732344d6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
