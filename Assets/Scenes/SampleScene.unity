@@ -2688,7 +2688,7 @@ MonoBehaviour:
   _cityNodes: []
   _constructingNodes: []
   _peopleManager: {fileID: 1073089795}
-  _oreManager: {fileID: 0}
+  _oreManager: {fileID: 1036729223}
 --- !u!1 &879701530
 GameObject:
   m_ObjectHideFlags: 0
