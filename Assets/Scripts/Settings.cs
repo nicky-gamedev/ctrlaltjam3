@@ -10,19 +10,14 @@ public class Settings : MonoBehaviour
     public GameObject panel;
     public AudioMixer audioMixer;
     public TMP_Dropdown resolutionDropdown;
-    public Slider SFXSlider, MusicSlider;
-    float currentSFX, currentMusic;
+    public Slider SFXSlider;
+    float currentSFX;
     Resolution[] resolutions;
 
-    public void SetMusic(float volume)
-    {
-        audioMixer.SetFloat("Music", volume);
-        currentSFX = volume;
-    }
     public void SetSFX(float volume)
     {
-        audioMixer.SetFloat("SFX", volume);
-        currentMusic = volume;
+        audioMixer.SetFloat("Master", volume);
+        currentSFX = volume;
     }
     public void SetResolution(int resolutionIndex)
     {
@@ -37,8 +32,6 @@ public class Settings : MonoBehaviour
                    resolutionDropdown.value);
         PlayerPrefs.SetFloat("SFXPreference",
                    currentSFX);
-        PlayerPrefs.SetFloat("MusicPreference",
-           currentMusic);
     }
 
     public void LoadSettings(int currentResolutionIndex)
@@ -56,13 +49,6 @@ public class Settings : MonoBehaviour
         else
             SFXSlider.value =
                         PlayerPrefs.GetFloat("SFXPreference");
-
-        if (PlayerPrefs.HasKey("MusicPreference"))
-            MusicSlider.value =
-                        PlayerPrefs.GetFloat("MusicPreference");
-        else
-            MusicSlider.value =
-                        PlayerPrefs.GetFloat("MusicPreference");
 
 
     }
