@@ -52,9 +52,9 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
     
     public UnityEvent onNodePlace = new UnityEvent();
 
-    public UnityEvent _onNodeConstructed = new UnityEvent();
+    public UnityEvent onNodeConstructed = new UnityEvent();
 
-    public UnityEvent _onNodeBroken = new UnityEvent();
+    public UnityEvent onNodeBroken = new UnityEvent();
 
     public bool _initialNode = false;
 
@@ -64,8 +64,8 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
     public void DoneConstructing(){
         if(!_fillingWithWater){
             _constructed = true;
+            onNodeConstructed?.Invoke();
             _nodeLightController.TurnLightsOn();
-            _onNodeConstructed.Invoke();
             _cityNodesHolder.AddCity(this);
         }
     }
@@ -91,7 +91,7 @@ public class CityNode : MonoBehaviour, IPointerDownHandler
             ()=>{
                 _filledWithWater = true;
                 if(_constructed){
-                    _onNodeBroken.Invoke();
+                    onNodeBroken.Invoke();
                 }
 
                 _cityNodesHolder.RemoveCity(this);

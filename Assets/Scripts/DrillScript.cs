@@ -29,6 +29,7 @@ public class DrillScript : MonoBehaviour
     
     [SerializeField] private UnityEvent _onPickup = new UnityEvent();
     [SerializeField] private UnityEvent _onLaunch = new UnityEvent();
+    [SerializeField] private UnityEvent onHit = new UnityEvent();
 
     public SpriteRenderer _spriteRenderer;
 
@@ -74,8 +75,14 @@ public class DrillScript : MonoBehaviour
         _sequence.Append(DOTween.To(x => {_light2D.intensity = x;}, 0f, 1f, duration).SetEase(_animationCurve));
         _onLaunch.Invoke();
 
-        Destroy(this.gameObject, duration);
-    }
+        StartCoroutine(DestroyObjectWithDelayCoroutine(duration));
+        }
+
+        private IEnumerator DestroyObjectWithDelayCoroutine(float duration)
+        {
+        yield return new WaitForSeconds(duration);
+        Destroy(gameObject);
+        }
 
     public void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.name == "Collider Tunnel"){
@@ -130,15 +137,29 @@ public class DrillScript : MonoBehaviour
                         else if(col.transform.parent.name.Contains("Ore"))
                         {
                             _oreManager._OreAmount += UnityEngine.Random.Range(3, 4);
+                            onHit.Invoke();
                             Destroy(col.transform.parent.gameObject);
                         }
                     }
                 }
 
-                Destroy(this.gameObject);
+                DestroyObjectWithDelay();
             }
         }
     }
+    public void DestroyObjectWithDelay()
+    {   
+        StopAllCoroutines();
+        _rigidbody.velocity = Vector2.zero;
+        _rigidbody.simulated = false;
+        _spriteRenderer.enabled = false;
+        //_tunnelRenderer.enabled = false;
+        _collider.enabled = false;
+        _miniColider.enabled = false;
+        _light2D.enabled = false;
+        StartCoroutine(DestroyObjectWithDelayCoroutine(3));
+    }
+
 
     public void OnTriggerExit2D(Collider2D col){
         if(col.gameObject.name == "Collider Tunnel"){

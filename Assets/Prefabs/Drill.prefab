@@ -329,6 +329,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6421385597781025257}
+        m_TargetAssemblyTypeName: PlayRandomPitchSounds, Assembly-CSharp
+        m_MethodName: PlayRandom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _spriteRenderer: {fileID: 4706225676658597028}
   _enabled: 0
   _ableToShoot: 0
@@ -5304,6 +5319,58 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &6304069572126620604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4776828105446509319}
+  - component: {fileID: 6421385597781025257}
+  m_Layer: 0
+  m_Name: hit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4776828105446509319
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6304069572126620604}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.3036156, y: -1.1582444, z: -0.017954411}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3674911513658891187}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6421385597781025257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6304069572126620604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7178c8a3b0083f64fb614e29f3c9d450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 3433810836787743156}
+  sounds:
+  - {fileID: 8300000, guid: a4b94436b51b2504e9ada2dcd4197bdd, type: 3}
+  - {fileID: 8300000, guid: a7aaa9d71fcba6b4785317f5593ee203, type: 3}
+  - {fileID: 8300000, guid: 4e9f65e7cff81cb45bfb2bf030253dc8, type: 3}
+  minPitch: 75
+  maxPitch: 120
+  oneShot: 1
 --- !u!1 &6623408991249792107
 GameObject:
   m_ObjectHideFlags: 0
@@ -10338,6 +10405,7 @@ Transform:
   m_Children:
   - {fileID: 2050444139287354695}
   - {fileID: 3058331786872866594}
+  - {fileID: 4776828105446509319}
   m_Father: {fileID: 372114143265320585}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &3433810836787743156
@@ -10349,7 +10417,7 @@ AudioSource:
   m_GameObject: {fileID: 8753266037095418561}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -268084934789764308, guid: 35f7858e618235145bf8d5975f8cb3f9, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
