@@ -30,6 +30,7 @@ public class DrillScript : MonoBehaviour
     [SerializeField] private UnityEvent _onPickup = new UnityEvent();
     [SerializeField] private UnityEvent _onLaunch = new UnityEvent();
     [SerializeField] private UnityEvent onHit = new UnityEvent();
+    [SerializeField] private UnityEvent onDestroy = new UnityEvent();
 
     public SpriteRenderer _spriteRenderer;
 
@@ -74,8 +75,8 @@ public class DrillScript : MonoBehaviour
         _sequence = DOTween.Sequence();
         _sequence.Append(DOTween.To(x => {_light2D.intensity = x;}, 0f, 1f, duration).SetEase(_animationCurve));
         _onLaunch.Invoke();
-
-        StartCoroutine(DestroyObjectWithDelayCoroutine(duration));
+        
+        Invoke(nameof(DestroyObjectWithDelay) , duration);
         }
 
         private IEnumerator DestroyObjectWithDelayCoroutine(float duration)
@@ -157,7 +158,8 @@ public class DrillScript : MonoBehaviour
         _collider.enabled = false;
         _miniColider.enabled = false;
         _light2D.enabled = false;
-        StartCoroutine(DestroyObjectWithDelayCoroutine(3));
+        onDestroy.Invoke();
+        StartCoroutine(DestroyObjectWithDelayCoroutine(4));
     }
 
 

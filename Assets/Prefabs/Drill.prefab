@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 1270135112944802947}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.39296252, y: -0.153663, z: 0.009566613}
-  m_LocalScale: {x: 0.43919995, y: 0.43919995, z: 0.43919995}
+  m_LocalPosition: {x: 0.026, y: -0.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8272744536268249422}
@@ -245,12 +245,51 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4810869955198448012}
+        m_TargetAssemblyTypeName: UnityEngine.Animation, UnityEngine
+        m_MethodName: set_clip
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7400000, guid: b52c446581d0ef845af3c7e7c19bff0c, type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AnimationClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onHit:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6421385597781025257}
         m_TargetAssemblyTypeName: PlayRandomPitchSounds, Assembly-CSharp
         m_MethodName: PlayRandom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDestroy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6479337562582112255}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4494631164625404615}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Stop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -432,7 +471,7 @@ Transform:
   m_GameObject: {fileID: 4050860698555055504}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.39296252, y: -0.153663, z: 0.009566613}
+  m_LocalPosition: {x: 0, y: -0.112, z: 0}
   m_LocalScale: {x: 0.43919995, y: 0.43919995, z: 0.43919995}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -5348,6 +5387,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8272744536268249422}
+  - component: {fileID: 3580470216617596826}
+  - component: {fileID: 4810869955198448012}
   m_Layer: 0
   m_Name: sprite holder
   m_TagString: Untagged
@@ -5364,8 +5405,8 @@ Transform:
   m_GameObject: {fileID: 7571021727743184671}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.8947234, y: 0.3498702, z: -0.021781905}
-  m_LocalScale: {x: 2.2768672, y: 2.2768672, z: 2.2768672}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 594219498560704069}
@@ -5374,6 +5415,43 @@ Transform:
   - {fileID: 5872632252916960485}
   m_Father: {fileID: 372114143265320585}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &3580470216617596826
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7571021727743184671}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!111 &4810869955198448012
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7571021727743184671}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: b52c446581d0ef845af3c7e7c19bff0c, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &7693935860325745530
 GameObject:
   m_ObjectHideFlags: 0
@@ -5400,8 +5478,8 @@ Transform:
   m_GameObject: {fileID: 7693935860325745530}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0.373, y: -0.025, z: 0.009566613}
-  m_LocalScale: {x: 0.43919995, y: 0.43919995, z: 0.43919995}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8272744536268249422}
@@ -5485,7 +5563,7 @@ Transform:
   m_GameObject: {fileID: 7955160886426433270}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.39296252, y: -0.153663, z: 0.009566613}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.43919995, y: 0.43919995, z: 0.43919995}
   m_ConstrainProportionsScale: 1
   m_Children: []
