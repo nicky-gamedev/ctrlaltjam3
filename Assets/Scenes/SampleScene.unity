@@ -559,7 +559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.37, y: -2.42}
+  m_AnchoredPosition: {x: 13.57, y: -0.28}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &76429338
@@ -582,7 +582,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Select a base type and\n place it on the ground
+  m_text: Select a base type and\nplace it on the ground
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 98afa76f3f22f0a4496ed637732344d6, type: 2}
   m_sharedMaterial: {fileID: -625602788554693033, guid: 98afa76f3f22f0a4496ed637732344d6, type: 2}
@@ -864,7 +864,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15.18, y: -5.15}
+  m_AnchoredPosition: {x: 13.57, y: -2.06}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &130025809
@@ -887,7 +887,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Building costs material,\n but each type have its perks: \n more workforce,
+  m_text: 'Building costs material,\nbut each type have its perks: \nmore workforce,
     light or defense'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 98afa76f3f22f0a4496ed637732344d6, type: 2}
@@ -5516,7 +5516,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Shoot the drill from a base\n to gather more material \n and keep running
+  m_text: Shoot the drill from a base\nto gather more material \nand keep running
     down...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 98afa76f3f22f0a4496ed637732344d6, type: 2}
@@ -5647,7 +5647,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13.77, y: -8.26}
+  m_AnchoredPosition: {x: 13.61, y: -4.5}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1645078697
@@ -6608,7 +6608,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.86, y: 0.03}
+  m_AnchoredPosition: {x: 13.57, y: 1.43}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2082381908
